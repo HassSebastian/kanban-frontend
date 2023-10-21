@@ -1,0 +1,52 @@
+.detailContainer {
+  position: relative;
+  width: 600px;
+  min-height: 400px;
+  padding: 30px;
+  .detailHead {
+    .detailTaskName {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      h2 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 3px;
+        word-break: break-word;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.03);
+          padding-left: 3px;
+          padding-right: 3px;
+          margin-left: -3px;
+          margin-right: -3px;
+        }
+      }
+    }
+    .detailWorkflow {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      span {
+        color: rgba(66, 66, 66, 0.8);
+        font-size: 12px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.03);
+          padding-left: 3px;
+          padding-right: 3px;
+          margin-left: -3px;
+          margin-right: -3px;
+        }
+      }
+    }
+  }
+  .detailProperties {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .detailDescription {
+    margin-bottom: 15px;
+    position: relative;
+  }
+}

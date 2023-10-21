@@ -9,16 +9,24 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { TaskInTableComponent } from './task-in-table/task-in-table.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { DialogTaskDetailComponent } from './dialog/dialog-task-detail/dialog-task-detail.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  declarations: [AppComponent, BoardComponent, DialogAddTaskComponent, TaskInTableComponent, TaskDetailComponent],
+  declarations: [
+    AppComponent,
+    BoardComponent,
+    DialogAddTaskComponent,
+    TaskInTableComponent,
+    DialogTaskDetailComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
