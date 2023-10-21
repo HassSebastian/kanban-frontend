@@ -1,6 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    margin: 0;
-    user-select: none;
-    background-color: #f2f2f2;
+body {
+  margin: 0;
+  user-select: none;
+  background-color: #f2f2f2;
+}
+.centerAll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.d-none {
+  display: none;
 }

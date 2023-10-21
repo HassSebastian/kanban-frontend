@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <div class="leftSide">
+    <div class="leftSide centerAll">
       <div class="hamburgerButton">
         <div></div>
         <div></div>
@@ -10,12 +10,12 @@
     </div>
     <div class="center">Kanban-Backend-Exercise</div>
     <div class="rideSide">
-      <div></div>
-      <div class="badges">
-        <div>?</div>
+      <div class="centerAll"></div>
+      <div class="badges centerAll">
+        <div class="centerAll">?</div>
       </div>
-      <div class="badges">
-        <div>SH</div>
+      <div class="badges centerAll">
+        <div class="centerAll">SH</div>
       </div>
     </div>
   </header>
@@ -23,48 +23,52 @@
   <div class="contentHead">
     <div class="headLeft">
       <div>My first Boards</div>
-      <div class="badges hoverBorder">
-        <div>SH</div>
+      <div class="badges centerAll hoverBorder">
+        <div class="centerAll">SH</div>
       </div>
-      <div class="badges hoverGreen">
-        <div>+</div>
+      <div class="badges centerAll hoverGreen">
+        <div class="centerAll">+</div>
       </div>
     </div>
-    <div class="headRight">mhj</div>
+    <div class="headRight">#</div>
   </div>
 
   <div class="contentTable">
-    <div>
+    <div class="column">
       <div class="listHead">
         To-do
-        <div class="greenPlus">
+        <div class="greenPlus centerAll" (click)="openAddTask()">
           <div></div>
           <div></div>
         </div>
       </div>
+      <div class="listContent">
+          <app-task-in-table></app-task-in-table>
+          <app-task-in-table></app-task-in-table>
+      </div>
     </div>
-    <div>
+    <div class="column">
       <div class="listHead">
         Do today
-        <div class="greenPlus">
+        <div class="greenPlus centerAll" (click)="openAddTask()">
           <div></div>
           <div></div>
         </div>
       </div>
     </div>
-    <div>
+    <div class="column">
       <div class="listHead">
         In progress
-        <div class="greenPlus">
+        <div class="greenPlus centerAll" (click)="openAddTask()">
           <div></div>
           <div></div>
         </div>
       </div>
     </div>
-    <div>
+    <div class="column">
       <div class="listHead">
         Done
-        <div class="greenPlus">
+        <div class="greenPlus centerAll" (click)="openAddTask()">
           <div></div>
           <div></div>
         </div>

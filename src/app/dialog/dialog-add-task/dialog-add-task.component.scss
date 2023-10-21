@@ -1,0 +1,113 @@
+.container {
+  position: relative;
+  width: 500px;
+  padding: 30px 30px 10px;
+  min-height: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  .close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    opacity: 0.6;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+      opacity: 1;
+    }
+  }
+  .selectContainer {
+    width: 100%;
+    margin-bottom: 30px;
+    input {
+      width: 100%;
+      height: 30px;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      border-bottom: 2px solid lightgrey;
+      margin-bottom: 30px;
+    }
+    ::placeholder {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .colorContainer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+      cursor: pointer;
+      .colorBadges {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgb(249, 249, 118);
+      }
+      .colorSelect {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+        border-bottom: 2px solid lightgrey;
+      }
+    }
+    .propertiesContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      .properties {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 4px;
+        padding: 4px 6px;
+        cursor: pointer;
+        &:hover {
+          filter: drop-shadow(4px 4px 8px lightgrey);
+        }
+      }
+    }
+    .membersContainer {
+      font-size: 12px;
+      margin-bottom: 30px;
+      .membersBadges {
+        display: flex;
+        gap: 8px;
+        .members {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          border: 2px solid yellow;
+        }
+        .membersPlus {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          border: 2px solid yellow;
+        }
+      }
+    }
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    button {
+      background-color: white;
+      border-radius: 6px;
+      border: 1px solid lightgrey;
+      filter: drop-shadow(2px 2px 2px lightgrey);
+      padding: 4px 6px;
+      cursor: pointer;
+      &:hover {
+        filter: drop-shadow(4px 4px 4px lightgrey);
+      }
+    }
+  }
+}

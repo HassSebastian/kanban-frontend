@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="close centerAll" (click)="closeAddTask()">
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="selectContainer">
+    <div>
+      <input placeholder="Task name" />
+    </div>
+    <div class="colorContainer">
+      <div class="colorBadges"></div>
+      <div class="colorSelect">Yellow</div>
+    </div>
+    <div class="propertiesContainer">
+      <div class="properties"><mat-icon>group</mat-icon> Members</div>
+      <div class="properties"><mat-icon>label</mat-icon>Labels</div>
+      <div class="properties"><mat-icon>description</mat-icon>Description</div>
+      <div class="properties"><mat-icon>more_horiz</mat-icon>More</div>
+    </div>
+    <!-- membersContainer -->
+    <div class="membersContainer d-none">
+      Members
+      <div class="membersBadges">
+        <div class="members centerAll">SH</div>
+        <div class="membersPlus centerAll"><mat-icon>add</mat-icon></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <button>Save & add more</button>
+    <button>Save & open details</button>
+    <button>Save & close</button>
+  </footer>
+</div>

@@ -9,12 +9,12 @@
     background-color: #333;
     padding: 4px 10px;
     .leftSide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: fit-content;
       gap: 8px;
       background-color: rgb(81, 81, 81);
+      &:hover {
+        background-color: rgb(110, 110, 110);
+      }
       border-radius: 2px;
       padding: 6px 16px 6px 8px;
       .hamburgerButton {
@@ -51,13 +51,7 @@
         }
       }
       .badges {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         div {
-          display: flex;
-          justify-content: center;
-          align-items: center;
           width: 23px;
           height: 23px;
           border-radius: 50%;
@@ -70,13 +64,7 @@
 }
 
 .badges {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 23px;
     height: 23px;
     border-radius: 50%;
@@ -128,10 +116,10 @@
   border: 1px solid lightgrey;
   margin: 0 16px 8px 16px;
   background-color: white;
-  div {
+  .column {
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 25%;
     .listHead {
       width: 100%;
@@ -146,9 +134,6 @@
       position: absolute;
       top: 2px;
       right: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 25px;
       height: 25px;
       border-radius: 50%;
@@ -165,6 +150,11 @@
         background-color: rgb(220, 220, 220);
       }
     }
+    // .task{
+    //   app-task-in-table{
+    //     height: fit-content;
+    //   }
+    // }
   }
   :nth-child(2) {
     border-left: 1px solid lightgrey;
