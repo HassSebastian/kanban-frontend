@@ -8,11 +8,5 @@ import { Component } from '@angular/core';
 })
 export class DialogAddTaskComponent {
 
-constructor(private dialogRef:DialogRef){}
-
-
-  closeAddTask(){
-    this.dialogRef.close()
-  }
 
 }

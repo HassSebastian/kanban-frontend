@@ -1,14 +1,52 @@
 <div class="detailContainer">
+  <app-close-button></app-close-button>
+
   <div class="detailHead">
     <div class="detailTaskName"><h2>Test</h2></div>
-    <div class="detailWorkflow"><span>to-do</span></div>
+    <div class="detailWorkflow"><label>to-do</label></div>
   </div>
   <div class="detailProperties">
-    <div></div>
-    <div class="detailPropertieLabel"></div>
-    <div class="detailPropertieLabel"></div>
-    <div class="detailPropertieLabel"></div>
-    <div></div>
+    <div class="propertieItemContainer">
+      <label>Color</label>
+      <div class="propertieItem">
+        <div class="color" style="background-color: yellow"></div>
+        <span>Yellow</span>
+      </div>
+    </div>
+    <div class="propertieItemContainer">
+      <label>Members</label>
+      <div class="propertieItem">
+        <div class="member centerAll" style="color: blue">SH</div>
+        <div class="addMember centerAll"><mat-icon>add</mat-icon></div>
+      </div>
+    </div>
+    <div class="propertieItemContainer">
+      <label>Labels</label>
+      <div class="propertieItem">
+        <div class="label centerAll">Test Label</div>
+        <div class="addLabel centerAll"><mat-icon>add</mat-icon></div>
+      </div>
+    </div>
+    <div class="propertieItemContainer">
+      <label>Time Estimate</label>
+      <div class="propertieItem">
+        <div class="time">12h</div>
+      </div>
+    </div>
+    <div class="propertieItemContainer">
+      <label>Due date</label>
+      <div class="propertieItem">
+        <div class="dueDate">
+          <strong >Oct 21 at 17:00</strong> 
+          <span> (in porgress)</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="detailDescription"></div>
+  <div class="propertieItemContainer">
+    <label>Description</label>
+    <div class="propertieItem">
+      <span>Description</span>
+    </div>
+  </div>
 </div>

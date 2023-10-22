@@ -27,9 +27,8 @@
       display: flex;
       align-items: center;
       margin-bottom: 15px;
-      span {
-        color: rgba(66, 66, 66, 0.8);
-        font-size: 12px;
+      label {
+        cursor: pointer;
         &:hover {
           background-color: rgba(0, 0, 0, 0.03);
           padding-left: 3px;
@@ -44,9 +43,83 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+    // margin-bottom: 15px;
+    .propertieItemContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-right: 30px;
+      margin-bottom: 10px;
+      .propertieItem {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        span {
+          margin-top: 5px;
+        }
+        .color {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          margin-top: 5px;
+          span {
+            font-size: 14px;
+          }
+        }
+        .member {
+          width: 30px;
+          height: 30px;
+          font-weight: 700;
+          border-radius: 50%;
+          border: 1px solid lightgrey;
+        }
+        .label {
+          min-width: 30px;
+          height: 30px;
+          border: 1px solid lightgrey;
+          border-radius: 8px;
+          padding: 0 8px;
+          font-size: 11px;
+        }
+        .time {
+          display: flex;
+          align-items: center;
+          height: 30px;
+          font-size: 14px;
+        }
+        .addMember,
+        .addLabel {
+          width: 30px;
+          height: 30px;
+          font-weight: 700;
+          border-radius: 50%;
+          border: 1px solid lightgrey;
+        }
+        .dueDate {
+          display: flex;
+          align-items: center;
+          height: 30px;
+          gap: 8px;
+          span{
+            margin-top: 0;
+          }
+          // strong, span{
+          //   display: flex;
+          //   align-items: center;
+          //   height: 30px;
+          // }
+        }
+      }
+    }
   }
   .detailDescription {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
-    position: relative;
   }
+}
+
+label {
+  color: rgba(66, 66, 66, 0.8);
+  font-size: 12px;
 }
