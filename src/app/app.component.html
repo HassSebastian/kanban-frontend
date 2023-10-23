@@ -73,17 +73,53 @@
     </div>
   </div>
   <div class="tableContent">
-    <div class="tableColumn">
-      <div><app-task-in-table></app-task-in-table></div>
+    <div
+      class="tableColumn"
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList, inProgressList, doTodayList]"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of todo" cdkDrag>
+        <app-task-in-table></app-task-in-table>
+      </div>
     </div>
-    <div class="tableColumn">
-      <!-- <div><app-task-in-table></app-task-in-table></div> -->
+    <div
+      class="tableColumn"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList, inProgressList, doTodayList]"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of done" cdkDrag>
+        <app-task-in-table></app-task-in-table>
+      </div>
     </div>
-    <div class="tableColumn">
-      <!-- <div><app-task-in-table></app-task-in-table></div> -->
+    <div
+      class="tableColumn"
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgress"
+      [cdkDropListConnectedTo]="[todoList, doneList, doTodayList]"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of inProgress" cdkDrag>
+        <app-task-in-table></app-task-in-table>
+      </div>
     </div>
-    <div class="tableColumn">
-      <!-- <div><app-task-in-table></app-task-in-table></div> -->
+    <div
+      class="tableColumn"
+      cdkDropList
+      #doTodayList="cdkDropList"
+      [cdkDropListData]="doToday"
+      [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of doToday" cdkDrag>
+        <app-task-in-table></app-task-in-table>
+      </div>
     </div>
   </div>
-</div>
+  </div>

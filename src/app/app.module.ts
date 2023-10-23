@@ -12,6 +12,9 @@ import { DialogTaskDetailComponent } from './dialog/dialog-task-detail/dialog-ta
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CloseButtonComponent } from './html-templates/close-button/close-button.component';
 import { GreenPlusComponent } from './html-templates/green-plus/green-plus.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,8 @@ import { GreenPlusComponent } from './html-templates/green-plus/green-plus.compo
     BrowserAnimationsModule,
     MatIconModule,
     MatTooltipModule,
+    MatMenuModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

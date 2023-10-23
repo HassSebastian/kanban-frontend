@@ -2,16 +2,33 @@
   <app-close-button></app-close-button>
 
   <div class="detailHead">
-    <div class="detailTaskName"><h2>Test</h2></div>
+    <!-- <div class="detailTaskName"><h2>Test</h2></div> -->
+    <div class="changeContainer">
+      <div class="changeField">
+        <input placeholder="Test" />
+      </div>
+      <div class="buttonField">
+        <button>CANCEL</button>
+        <button><strong>SAVE</strong></button>
+      </div>
+    </div>
     <div class="detailWorkflow"><label>to-do</label></div>
   </div>
   <div class="detailProperties">
     <div class="propertieItemContainer">
       <label>Color</label>
-      <div class="propertieItem">
+      <button class="propertieItem" mat-button [matMenuTriggerFor]="menu">
         <div class="color" style="background-color: yellow"></div>
         <span>Yellow</span>
-      </div>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button class="buttonColor" mat-menu-item *ngFor="let color of colors">
+          <div class="menuColor">
+            <div [style.background-color]="color.color"></div>
+            <span>{{ color.name }}</span>
+          </div>
+        </button>
+      </mat-menu>
     </div>
     <div class="propertieItemContainer">
       <label>Members</label>
@@ -37,7 +54,7 @@
       <label>Due date</label>
       <div class="propertieItem">
         <div class="dueDate">
-          <strong >Oct 21 at 17:00</strong> 
+          <strong>Oct 21 at 17:00</strong>
           <span> (in porgress)</span>
         </div>
       </div>
@@ -45,8 +62,17 @@
   </div>
   <div class="propertieItemContainer">
     <label>Description</label>
-    <div class="propertieItem">
+    <!-- <div class="propertieItem">
       <span>Description</span>
+    </div> -->
+    <div class="changeContainer">
+      <div class="changeField">
+        <input placeholder="Description" />
+      </div>
+      <div class="buttonField">
+        <button>CANCEL</button>
+        <button><strong>SAVE</strong></button>
+      </div>
     </div>
   </div>
 </div>
