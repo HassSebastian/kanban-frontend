@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { DialogTaskDetailComponent } from '../dialog/dialog-task-detail/dialog-task-detail.component';
+import { DialogTaskDetailComponent } from 'src/app/dialog/dialog-task-detail/dialog-task-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task-in-table',
   templateUrl: './task-in-table.component.html',
-  styleUrls: ['./task-in-table.component.scss'],
+  styleUrls: ['./task-in-table.component.scss']
 })
 export class TaskInTableComponent {
   selectPropertie: number = 0;
@@ -29,4 +29,5 @@ export class TaskInTableComponent {
   
     actions[index]?.();
   }
-  }
+
+}

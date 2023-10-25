@@ -1,0 +1,43 @@
+<div class="taskContainer" (click)="openTaskDetail()">
+    <span class="taskName">Test</span>
+    <div class="taskProperties">
+      <div class="taskPropertieList">
+        <mat-icon
+          class="centerAll"
+          (click)="button(1, $event)"
+          matTooltip="Has description. Click to expand or collapse."
+          matTooltipPosition="above"
+          >description</mat-icon
+        >
+        <mat-icon
+          class="centerAll"
+          (click)="button(2, $event)"
+          matTooltip="Has description. Click to expand or collapse."
+          matTooltipPosition="above"
+          >date_range</mat-icon
+        >
+        <mat-icon
+          class="centerAll"
+          (click)="button(3, $event)"
+          matTooltip="Time spent / Time estimate"
+          matTooltipPosition="above"
+          >access_time</mat-icon
+        >
+        <span matTooltip="Time spent / Time estimate" matTooltipPosition="above"
+          >0h / 12h</span
+        >
+      </div>
+      <div
+        class="avatar centerAll"
+        matTooltip="Sebastian Haß"
+        matTooltipPosition="above"
+      >
+        SH
+      </div>
+    </div>
+    <div class="taskDescription" *ngIf="openDescription">test description</div>
+    <div class="taskDueDate" *ngIf="openDueDate">
+      <span>Due: <strong>Today 17:00</strong> <span> (done)</span></span>
+    </div>
+  </div>
+  

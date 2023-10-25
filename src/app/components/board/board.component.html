@@ -1,0 +1,126 @@
+<!-- <app-board></app-board> -->
+<div class="container">
+    <header>
+      <div class="leftSide centerAll">
+        <div class="hamburgerButton">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="text">Boards</div>
+      </div>
+      <div class="center">Kanban-Backend-Exercise</div>
+      <div class="rideSide">
+        <div class="info centerAll">
+          <mat-icon>info_outline</mat-icon>
+        </div>
+        <div class="badges centerAll">
+          <div class="centerAll">?</div>
+        </div>
+        <div
+          class="badges centerAll"
+          matTooltip="Info about the action"
+          matTooltipPosition="above"
+        >
+          <div class="centerAll">SH</div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="contentHead">
+      <div class="headLeft">
+        <div>My first Boards</div>
+        <div class="badges centerAll hoverBorder">
+          <div
+            class="centerAll"
+            matTooltip="Info about the action"
+            matTooltipPosition="above"
+          >
+            SH
+          </div>
+        </div>
+        <div class="badges centerAll hoverGreen">
+          <div class="centerAll">+</div>
+        </div>
+      </div>
+      <div class="headRight">#</div>
+    </div>
+  
+    <div class="tableHead">
+      <div class="tableField">
+        <div class="tableDescription">
+          To-do
+          <app-green-plus></app-green-plus>
+        </div>
+      </div>
+      <div class="tableField">
+        <div class="tableDescription">
+          Do today
+          <app-green-plus></app-green-plus>
+        </div>
+      </div>
+      <div class="tableField">
+        <div class="tableDescription">
+          In progress
+          <app-green-plus></app-green-plus>
+        </div>
+      </div>
+      <div class="tableField">
+        <div class="tableDescription">
+          Done
+          <app-green-plus></app-green-plus>
+        </div>
+      </div>
+    </div>
+    <div class="tableContent">
+      <div
+        class="tableColumn"
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList, inProgressList, doTodayList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let item of todo" cdkDrag>
+          <app-task-in-table></app-task-in-table>
+        </div>
+      </div>
+      <div
+        class="tableColumn"
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList, inProgressList, doTodayList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let item of done" cdkDrag>
+          <app-task-in-table></app-task-in-table>
+        </div>
+      </div>
+      <div
+        class="tableColumn"
+        cdkDropList
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgress"
+        [cdkDropListConnectedTo]="[todoList, doneList, doTodayList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let item of inProgress" cdkDrag>
+          <app-task-in-table></app-task-in-table>
+        </div>
+      </div>
+      <div
+        class="tableColumn"
+        cdkDropList
+        #doTodayList="cdkDropList"
+        [cdkDropListData]="doToday"
+        [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let item of doToday" cdkDrag>
+          <app-task-in-table></app-task-in-table>
+        </div>
+      </div>
+    </div>
+    </div>
+  
