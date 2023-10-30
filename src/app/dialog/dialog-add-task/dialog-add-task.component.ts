@@ -1,5 +1,4 @@
-import { DialogRef } from '@angular/cdk/dialog';
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -7,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./dialog-add-task.component.scss'],
 })
 export class DialogAddTaskComponent {
-
 
 }

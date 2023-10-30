@@ -17,7 +17,7 @@ import { TaskInTableComponent } from './components/task-in-table/task-in-table.c
 import { LoginComponent } from './components/login/login.component';
 import { BoardComponent } from './components/board/board.component';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     MatMenuModule,
     DragDropModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -10,4 +10,8 @@ import { ColorService } from 'src/app/services/color.service';
 export class DialogTaskDetailComponent {
   colors = this.colorService.colors;
   constructor(public colorService: ColorService) {}
+  
+  getColors() {
+    return this.colorService.colors;
+  }
 }

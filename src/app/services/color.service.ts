@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ColorService {
   colors = [
-    {name:'Yellow', color: '#FFFF00'},
-    {name:'Blue', color: '#0000FF'},
-    {name:'Green', color: '#00FF00'},
-    {name:'Orange', color: '#FF8C00'},
-    {name:'Cyan', color: '#00FFFF'},
-    {name:'Purple', color: '#A020F0'},
-    {name:'Magenta', color: '#FF00FF'},
-  ]
-
-  constructor() { }
+    { name: 'Yellow', color: '60' },
+    { name: 'Blue', color: '240' },
+    { name: 'Green', color: '120' },
+    { name: 'Orange', color: '30' },
+    { name: 'Red', color: '0' },
+    { name: 'Cyan', color: '180' },
+    { name: 'Purple', color: '300' },
+  ];
 }

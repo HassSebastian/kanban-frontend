@@ -10,28 +10,40 @@ import {
   CdkDropListGroup,
   moveItemInArray,
   transferArrayItem,
-  
 } from '@angular/cdk/drag-drop';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent {
-  title = 'kanban-frontend';
+  tasks: any = [];
+  error: string = '';
 
-  todo = [''];
-  done = [''];
-  inProgress =[''];
-  doToday = [''];
-  
-  constructor(private dialog: MatDialog, private colorService: ColorService) {}
+  constructor(
+    private dialog: MatDialog,
+    private colorService: ColorService,
+    private http: HttpClient
+  ) {}
 
-  ngOnInit() {
-    //   this.dialog.open(DialogTaskDetailComponent);
-    //   console.log(this.colorService.colors);
+  async ngOnInit() {
+    try {
+      this.tasks = await this.loadTasks();
+      console.log(this.tasks);
+    } catch (e) {
+      this.error = 'Fehler beim laden';
+    }
   }
+
+  loadTasks() {
+    const url = environment.baseUrl + '/board/';
+    return lastValueFrom(this.http.get(url));
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -48,5 +60,4 @@ export class BoardComponent {
       );
     }
   }
-
 }
