@@ -17,4 +17,14 @@ export class AuthService {
     };
     return lastValueFrom(this.http.post(url, body));
   }
+
+
+  public registrWithUsernameAndPassword(username: string, password: string) {
+    const url = environment.baseUrl + '/register/';
+    const body = {
+      username: username,
+      password: password,
+    };
+    return lastValueFrom(this.http.post(url, body));
+  }
 }

@@ -1,0 +1,22 @@
+<div class="loginContainer centerAll">
+  <div class="loginArea centerAll">
+    <h2>Register</h2>
+    <form (ngSubmit)="registerUser()">
+        <input
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Password"
+          required
+        />
+        <button>Save</button>
+      </form>
+  </div>
+</div>

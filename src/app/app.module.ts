@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { BoardComponent } from './components/board/board.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     GreenPlusComponent,
     TaskInTableComponent,
     LoginComponent,
-    BoardComponent
+    BoardComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

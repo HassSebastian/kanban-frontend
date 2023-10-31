@@ -18,7 +18,6 @@ export class LoginComponent {
         this.username,
         this.password
       );
-
       this.router.navigateByUrl('board')
     } catch (e) {
       alert('login fehlgeschlagen')
