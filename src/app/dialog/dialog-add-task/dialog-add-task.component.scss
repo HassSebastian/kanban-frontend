@@ -37,24 +37,45 @@
       font-weight: 700;
     }
     .colorContainer {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 30px;
-      cursor: pointer;
-      .colorBadges {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: rgb(249, 249, 118);
-      }
-      .colorSelect {
+      button {
         display: flex;
-        align-items: center;
         width: 100%;
-        height: 40px;
-        font-size: 16px;
-        border-bottom: 2px solid lightgrey;
+        cursor: pointer;
+        .colorBadges {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: rgb(249, 249, 118);
+        }
+        .colorSelect {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 40px;
+          font-size: 16px;
+          border-bottom: 2px solid lightgrey;
+        }
+      }
+      .selectionList {
+        position: absolute;
+        top: 45px;
+        width: 100%;
+        button {
+          display: flex;
+          justify-content: space-between;
+
+          .selectionColorBadges {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgb(249, 249, 118);
+          }
+        }
       }
     }
     .propertiesContainer {
@@ -94,6 +115,7 @@
       }
     }
   }
+
   footer {
     display: flex;
     justify-content: space-between;

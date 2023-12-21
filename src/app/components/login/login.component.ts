@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  constructor(private authService:AuthService, private router:Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   async login() {
     try {
@@ -18,11 +18,14 @@ export class LoginComponent {
         this.username,
         this.password
       );
-      this.router.navigateByUrl('board')
-    } catch (e) {
-      alert('login fehlgeschlagen')
-      console.error(e);
+      this.router.navigateByUrl('board');
+    } catch (error: any) {
+      if (error.status === 0) {
+        alert('Das Backend ist gerade nicht erreichbar');
+      } else {
+        alert('login fehlgeschlagen');
+        console.error('Fehler =', error);
+      }
     }
   }
-
 }

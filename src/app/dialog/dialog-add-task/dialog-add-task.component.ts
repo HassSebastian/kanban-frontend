@@ -1,4 +1,6 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { ColorService } from 'src/app/services/color.service';
+
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -6,5 +8,5 @@ import { Component} from '@angular/core';
   styleUrls: ['./dialog-add-task.component.scss'],
 })
 export class DialogAddTaskComponent {
-
+  constructor(public colorService:ColorService){}
 }

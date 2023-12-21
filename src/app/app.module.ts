@@ -19,6 +19,8 @@ import { BoardComponent } from './components/board/board.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,

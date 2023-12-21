@@ -80,7 +80,7 @@
       [cdkDropListConnectedTo]="[doneList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of tasks; let i = index" cdkDrag>
+      <div *ngFor="let task of tasks" cdkDrag>
         <ng-container *ngIf="task.status == 0">
           <app-task-in-table
             [taskAuthor]="task.author"
