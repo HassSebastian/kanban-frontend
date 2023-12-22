@@ -1,18 +1,35 @@
-<div class="container">
+<div
+  class="container"
+  [style.background-color]="
+    'hsl(' + colors[selectedColorIndex].color + ', 100%, 90%)'
+  "
+>
   <app-close-button></app-close-button>
   <div class="selectContainer">
     <div>
-      <input placeholder="Task name" />
+      <input placeholder="Task name" [(ngModel)]="taskName" required="" />
     </div>
     <div class="colorContainer">
-      <button>
-        <div class="colorBadges"></div>
-        <div class="colorText">Yellow</div>
+      <button (click)="openCloseSelectColor()">
+        <div
+          class="colorBadges"
+          [style.background-color]="
+            'hsl(' + colors[selectedColorIndex].color + ', 100%, 50%)'
+          "
+        ></div>
+        <div class="colorText">{{ colors[selectedColorIndex].name }}</div>
       </button>
-      <div class="selectionList">
-        <button>
-          <div class="selectionColorBadges"></div>
-          <div class="selectionColorText">Yellow</div>
+      <div class="selectionList" *ngIf="showSelectColorList">
+        <button
+          [style.background-color]="'hsl(' + color.color + ', 100%, 95%)'"
+          *ngFor="let color of colors; let i = index"
+          (click)="selectedColor(i)"
+        >
+          <div
+            class="selectionColorBadges"
+            [style.background-color]="'hsl(' + color.color + ', 100%, 65%)'"
+          ></div>
+          <div class="selectionColorText">{{ color.name }}</div>
         </button>
       </div>
     </div>
@@ -34,6 +51,6 @@
   <footer>
     <button>Save & add more</button>
     <button>Save & open details</button>
-    <button>Save & close</button>
+    <button (click)="saveAndClose()">Save & close</button>
   </footer>
 </div>

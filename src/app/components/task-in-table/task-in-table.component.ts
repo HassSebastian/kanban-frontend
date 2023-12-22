@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DialogTaskDetailComponent } from 'src/app/dialog/dialog-task-detail/dialog-task-detail.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ColorService } from 'src/app/services/color.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-task-in-table',
@@ -22,14 +22,14 @@ export class TaskInTableComponent {
   openDueDate: boolean = false;
   // taskBorderColor: string;
 
-  constructor(private dialog: MatDialog, public colorService: ColorService) {
+  constructor(private dialog: MatDialog, public dataService: DataService) {
   }
 
   ngOnInit() {
     
   }
   getTaskColor(){
-    return this.colorService.colors[this.taskColor].color;
+    return this.dataService.colors[this.taskColor].color;
   }
 
   openTaskDetail() {

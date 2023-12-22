@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddTaskComponent } from 'src/app/dialog/dialog-add-task/dialog-add-task.component';
 
@@ -8,12 +8,17 @@ import { DialogAddTaskComponent } from 'src/app/dialog/dialog-add-task/dialog-ad
   styleUrls: ['./green-plus.component.scss']
 })
 export class GreenPlusComponent {
+  @Input() status!:number;
+
   constructor(private dialog: MatDialog) {}
 
+
+  ngOnInit() {
+    // this.dialog.open(DialogAddTaskComponent);
+  }
+
   openAddTask() {
-
-    this.dialog.open(DialogAddTaskComponent);
-
+    this.dialog.open(DialogAddTaskComponent, {data: {status:this.status}});
   }
 
 }

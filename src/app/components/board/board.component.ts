@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddTaskComponent } from 'src/app/dialog/dialog-add-task/dialog-add-task.component';
 import { DialogTaskDetailComponent } from 'src/app/dialog/dialog-task-detail/dialog-task-detail.component';
-import { ColorService } from 'src/app/services/color.service';
 import {
   CdkDragDrop,
   CdkDrag,
@@ -14,6 +13,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { lastValueFrom } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-board',
@@ -26,7 +26,7 @@ export class BoardComponent {
 
   constructor(
     private dialog: MatDialog,
-    private colorService: ColorService,
+    private dataService: DataService,
     private http: HttpClient
   ) {}
 
