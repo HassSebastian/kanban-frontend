@@ -9,18 +9,12 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./task-in-table.component.scss'],
 })
 export class TaskInTableComponent {
-  @Input() taskAuthor!: string;
-  @Input() taskColor!: number;
-  @Input() taskCreated_at!: number;
-  @Input() taskDescription!: string;
-  @Input() taskId!: number;
-  @Input() taskTitle!: string;
-  @Input() taskStatus!: number;
+  @Input() task!: any;
 
   selectPropertie: number = 0;
   openDescription: boolean = false;
   openDueDate: boolean = false;
-  // taskBorderColor: string;
+  colors = this.dataService.colors;
 
   constructor(private dialog: MatDialog, public dataService: DataService) {
   }
@@ -28,12 +22,14 @@ export class TaskInTableComponent {
   ngOnInit() {
     
   }
-  getTaskColor(){
-    return this.dataService.colors[this.taskColor].color;
-  }
+
+  // getTaskColor(){
+  //   return this.dataService.colors[this.task].color;
+  // }
 
   openTaskDetail() {
-    this.dialog.open(DialogTaskDetailComponent);
+    const task = this.task    
+    this.dialog.open(DialogTaskDetailComponent, {data: task});
   }
 
   button(index: 1 | 2 | 3, event: Event) {
@@ -42,7 +38,7 @@ export class TaskInTableComponent {
     const actions = {
       1: () => (this.openDescription = !this.openDescription),
       2: () => (this.openDueDate = !this.openDueDate),
-      3: () => this.dialog.open(DialogTaskDetailComponent),
+      3: () => this.openTaskDetail(),
     };
 
     actions[index]?.();

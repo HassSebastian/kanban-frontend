@@ -1,10 +1,10 @@
 <div
   class="taskContainer"
   (click)="openTaskDetail()"
-  [style.border]="'2px solid hsl(' + getTaskColor() + ', 100%, 50%)'"
-  [style.background-color]="'hsl(' + getTaskColor() + ', 100%, 95%)'"
+  [style.border]="'2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'"
+  [style.background-color]="'hsl(' + colors[task.color].color + ', 100%, 95%)'"
 >
-  <span class="taskName">{{ taskTitle }}</span>
+  <span class="taskName">{{ task.title }}</span>
   <div class="taskProperties">
     <div class="taskPropertieList">
       <mat-icon
@@ -34,14 +34,16 @@
     </div>
     <div
       class="avatar centerAll"
-      matTooltip="{{ taskAuthor }}"
+      [style.border]="'2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'"
+
+      matTooltip="{{ task.author }}"
       matTooltipPosition="above"
     >
       SH
     </div>
   </div>
   <div class="taskDescription" *ngIf="openDescription">
-    {{ taskDescription }}
+    {{ task.description }}
   </div>
   <div class="taskDueDate" *ngIf="openDueDate">
     <span>Due: <strong>Today 17:00</strong> <span> (done)</span></span>

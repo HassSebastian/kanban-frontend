@@ -10,10 +10,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { lastValueFrom } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
+import { LoadTaskService } from 'src/app/services/load-task.service';
 
 @Component({
   selector: 'app-board',
@@ -21,27 +19,14 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent {
-  tasks: any = [];
-  error: string = '';
-
   constructor(
     private dialog: MatDialog,
     private dataService: DataService,
-    private http: HttpClient
+    public loadTaskService: LoadTaskService
   ) {}
 
   async ngOnInit() {
-    try {
-      this.tasks = await this.loadTasks();
-      console.log(this.tasks);
-    } catch (e) {
-      this.error = 'Fehler beim laden';
-    }
-  }
-
-  loadTasks() {
-    const url = environment.baseUrl + '/board/';
-    return lastValueFrom(this.http.get(url));
+    await this.loadTaskService.renderSite();
   }
 
   drop(event: CdkDragDrop<string[]>) {

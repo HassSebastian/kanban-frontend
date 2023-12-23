@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { Component, Inject } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
+import { lastValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { DialogRef } from '@angular/cdk/dialog';
+import { LoadTaskService } from 'src/app/services/load-task.service';
 @Component({
   selector: 'app-dialog-task-detail',
   templateUrl: './dialog-task-detail.component.html',
@@ -9,9 +13,35 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class DialogTaskDetailComponent {
   colors = this.dataService.colors;
-  constructor(public dataService: DataService) {}
-  
-  getColors() {
-    return this.dataService.colors;
+  showTitleInput: boolean = false;
+  showDescriptionInput: boolean = false;
+
+  constructor(
+    public dataService: DataService,
+    @Inject(MAT_DIALOG_DATA) public task: any,
+    private http: HttpClient,
+    private dialogRef:DialogRef,
+    private loadTaskService:LoadTaskService,
+  ) {}
+
+  cancelInput() {
+    this.showTitleInput = false;
+    this.showDescriptionInput = false;
+  }
+
+  updateTitle() {}
+
+  updateDescription() {}
+
+  async deleteTask(taskId:number) {
+    
+    const url = environment.baseUrl + '/board/' + taskId;
+    try {
+      await lastValueFrom(this.http.delete(url));
+      this.loadTaskService.renderSite();
+      this.dialogRef.close();
+    } catch (error) {
+      console.error('Fehler beim Löschen:', error);
+    }
   }
 }

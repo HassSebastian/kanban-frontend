@@ -7,17 +7,31 @@
   <app-close-button></app-close-button>
   <div class="selectContainer">
     <div>
-      <input placeholder="Task name" [(ngModel)]="taskName" required="" />
+      <input
+        placeholder="Task Titel"
+        [(ngModel)]="taskTitle"
+        required=""
+        [style.border-bottom]="
+          '2px solid hsl(' + colors[selectedColorIndex].color + ', 100%, 65%)'
+        "
+      />
     </div>
     <div class="colorContainer">
       <button (click)="openCloseSelectColor()">
         <div
           class="colorBadges"
           [style.background-color]="
-            'hsl(' + colors[selectedColorIndex].color + ', 100%, 50%)'
+            'hsl(' + colors[selectedColorIndex].color + ', 100%, 75%)'
           "
         ></div>
-        <div class="colorText">{{ colors[selectedColorIndex].name }}</div>
+        <div
+          class="colorText"
+          [style.border-bottom]="
+            '2px solid hsl(' + colors[selectedColorIndex].color + ', 100%, 65%)'
+          "
+        >
+          {{ colors[selectedColorIndex].name }}
+        </div>
       </button>
       <div class="selectionList" *ngIf="showSelectColorList">
         <button

@@ -1,15 +1,34 @@
-<div class="detailContainer">
+<div
+  class="detailContainer"
+  [style.background-color]="'hsl(' + colors[task.color].color + ', 100%, 90%)'"
+>
   <app-close-button></app-close-button>
+
+  <div class="delete centerAll" (click)="deleteTask(task.id)" matTooltip="delete" matTooltipPosition="above">
+    <mat-icon>delete</mat-icon>
+  </div>
 
   <div class="detailHead">
     <!-- <div class="detailTaskName"><h2>Test</h2></div> -->
     <div class="changeContainer">
-      <div class="changeField">
-        <input placeholder="Test" />
+      <div
+        class="title"
+        (click)="showTitleInput = true"
+        *ngIf="!showTitleInput"
+      >
+        {{ task.title }}
       </div>
-      <div class="buttonField">
-        <button>CANCEL</button>
-        <button><strong>SAVE</strong></button>
+      <div class="changeField" *ngIf="showTitleInput">
+        <input
+          value="{{ task.title }}"
+          [style.border-bottom]="
+            '2px solid hsl(' + colors[task.color].color + ', 100%, 65%)'
+          "
+        />
+      </div>
+      <div class="buttonField" *ngIf="showTitleInput">
+        <button (click)="cancelInput()">CANCEL</button>
+        <button (click)="updateTitle()"><strong>SAVE</strong></button>
       </div>
     </div>
     <div class="detailWorkflow"><label>to-do</label></div>
@@ -22,10 +41,16 @@
         <span>Yellow</span>
       </button>
       <mat-menu #menu="matMenu">
-        <button class="buttonColor" mat-menu-item *ngFor="let color of getColors() | keyvalue">
+        <button
+          class="buttonColor"
+          mat-menu-item
+          *ngFor="let color of colors; let i = index"
+        >
           <div class="menuColor">
-            <div [style.background-color]="color.value"></div>
-            <span>{{ color.key }}</span>
+            <div
+              [style.background-color]="'hsl(' + color.color + ', 100%, 65%)'"
+            ></div>
+            <span>{{ color.name }}</span>
           </div>
         </button>
       </mat-menu>
@@ -60,18 +85,26 @@
       </div>
     </div>
   </div>
-  <div class="propertieItemContainer">
+  <div class="propertieItemContainer" *ngIf="task.description">
     <label>Description</label>
-    <!-- <div class="propertieItem">
-      <span>Description</span>
-    </div> -->
-    <div class="changeContainer">
+    <div
+      class="title"
+      (click)="showDescriptionInput = true"
+      *ngIf="!showDescriptionInput"
+    >
+      {{ task.description }}
+    </div>
+
+    <div class="changeContainer" *ngIf="showDescriptionInput">
       <div class="changeField">
-        <input placeholder="Description" />
+        <input
+          [value]="task?.description"
+          [placeholder]="task?.description ? '' : 'Description'"
+        />
       </div>
       <div class="buttonField">
-        <button>CANCEL</button>
-        <button><strong>SAVE</strong></button>
+        <button (click)="cancelInput()">CANCEL</button>
+        <button (click)="updateDescription()"><strong>SAVE</strong></button>
       </div>
     </div>
   </div>

@@ -80,16 +80,10 @@
       [cdkDropListConnectedTo]="[doneList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of tasks" cdkDrag>
+      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 0">
           <app-task-in-table
-            [taskAuthor]="task.author"
-            [taskColor]="task.color"
-            [taskCreated_at]="task.Created_at"
-            [taskDescription]="task.description"
-            [taskId]="task.id"
-            [taskTitle]="task.title"
-            [taskStatus]="task.status"
+            [task]="task"
           ></app-task-in-table>
         </ng-container>
       </div>
@@ -101,16 +95,10 @@
       [cdkDropListConnectedTo]="[todoList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of tasks" cdkDrag>
+      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 1">
           <app-task-in-table
-            [taskAuthor]="task.author"
-            [taskColor]="task.color"
-            [taskCreated_at]="task.Created_at"
-            [taskDescription]="task.description"
-            [taskId]="task.id"
-            [taskTitle]="task.title"
-            [taskStatus]="task.status"
+            [task]="task"
           ></app-task-in-table>
         </ng-container>
       </div>
@@ -122,16 +110,10 @@
       [cdkDropListConnectedTo]="[todoList, doneList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of tasks" cdkDrag>
+      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 2">
           <app-task-in-table
-            [taskAuthor]="task.author"
-            [taskColor]="task.color"
-            [taskCreated_at]="task.Created_at"
-            [taskDescription]="task.description"
-            [taskId]="task.id"
-            [taskTitle]="task.title"
-            [taskStatus]="task.status"
+            [task]="task"
           ></app-task-in-table>
         </ng-container>
       </div>
@@ -143,16 +125,10 @@
       [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of tasks" cdkDrag>
+      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 3">
           <app-task-in-table
-            [taskAuthor]="task.author"
-            [taskColor]="task.color"
-            [taskCreated_at]="task.Created_at"
-            [taskDescription]="task.description"
-            [taskId]="task.id"
-            [taskTitle]="task.title"
-            [taskStatus]="task.status"
+            [task]="task"
           ></app-task-in-table>
         </ng-container>
       </div>

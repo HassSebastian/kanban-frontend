@@ -17,7 +17,7 @@ export class DialogAddTaskComponent {
   colors = this.dataService.colors;
   showSelectColorList: boolean = false;
   selectedColorIndex: number = 0;
-  taskName: string = '';
+  taskTitle: string = '';
 
   openCloseSelectColor() {
     this.showSelectColorList = !this.showSelectColorList;
@@ -29,9 +29,9 @@ export class DialogAddTaskComponent {
 
   saveAndClose() {
     const color = this.selectedColorIndex;
-    const name = this.taskName;
+    const title = this.taskTitle;
     const status = this.data.status;
-    console.log('Color = ', color + '\nName = ', name + '\nStatus = ', status);
+    console.log('Color = ', color + '\nTitle = ', title + '\nStatus = ', status);
 
     this.dialogRef.close();
   }
