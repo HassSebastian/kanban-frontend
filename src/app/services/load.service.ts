@@ -6,9 +6,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class LoadTaskService {
+export class LoadService {
   tasks: any = [];
   error: string = '';
+  members: any = [];
+  
 
   constructor(private http: HttpClient) {}
 
@@ -19,12 +21,22 @@ async renderSite(){
   } catch (e) {
     this.error = 'Fehler beim laden';
   }
-
 }
-
+async renderUsers(){
+  try{
+    this.members = await this.loadAllUsers();
+  } catch (e) {
+    console.log("fehler beim Laden der User", e);
+  }
+}
 
   loadTasks() {
     const url = environment.baseUrl + '/board/';
+    return lastValueFrom(this.http.get(url));
+  }
+
+  loadAllUsers(){
+    const url = environment.baseUrl + '/api/get_all_users/';
     return lastValueFrom(this.http.get(url));
   }
 }

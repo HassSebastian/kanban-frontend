@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { MembersComponent } from './html-templates/members/members.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     LoginComponent,
     BoardComponent,
     RegisterComponent,
+    MembersComponent,
   ],
   imports: [
     BrowserModule,

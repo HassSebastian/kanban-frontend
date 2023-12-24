@@ -1,0 +1,10 @@
+<div>
+  <button mat-button class="buttonContainer" [matMenuTriggerFor]="menu">
+    <mat-icon>group</mat-icon> Members
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let member of members">
+      <input type="checkbox" />{{ member.username }}
+    </button>
+  </mat-menu>
+</div>

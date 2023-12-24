@@ -80,7 +80,7 @@
       [cdkDropListConnectedTo]="[doneList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
+      <div *ngFor="let task of loadService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 0">
           <app-task-in-table
             [task]="task"
@@ -95,7 +95,7 @@
       [cdkDropListConnectedTo]="[todoList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
+      <div *ngFor="let task of loadService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 1">
           <app-task-in-table
             [task]="task"
@@ -110,7 +110,7 @@
       [cdkDropListConnectedTo]="[todoList, doneList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
+      <div *ngFor="let task of loadService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 2">
           <app-task-in-table
             [task]="task"
@@ -125,7 +125,7 @@
       [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of loadTaskService.tasks" cdkDrag>
+      <div *ngFor="let task of loadService.tasks" cdkDrag>
         <ng-container *ngIf="task.status == 3">
           <app-task-in-table
             [task]="task"

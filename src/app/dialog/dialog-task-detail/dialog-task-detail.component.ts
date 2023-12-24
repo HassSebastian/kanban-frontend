@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DialogRef } from '@angular/cdk/dialog';
-import { LoadTaskService } from 'src/app/services/load-task.service';
+import { LoadService } from 'src/app/services/load.service';
 @Component({
   selector: 'app-dialog-task-detail',
   templateUrl: './dialog-task-detail.component.html',
@@ -21,7 +21,7 @@ export class DialogTaskDetailComponent {
     @Inject(MAT_DIALOG_DATA) public task: any,
     private http: HttpClient,
     private dialogRef:DialogRef,
-    private loadTaskService:LoadTaskService,
+    private loadService:LoadService,
   ) {}
 
   cancelInput() {
@@ -38,7 +38,7 @@ export class DialogTaskDetailComponent {
     const url = environment.baseUrl + '/board/' + taskId;
     try {
       await lastValueFrom(this.http.delete(url));
-      this.loadTaskService.renderSite();
+      this.loadService.renderSite();
       this.dialogRef.close();
     } catch (error) {
       console.error('Fehler beim Löschen:', error);

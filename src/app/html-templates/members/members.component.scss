@@ -1,0 +1,13 @@
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 6px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    &:hover {
+        filter: drop-shadow(4px 4px 8px lightgrey);
+      }
+
+}

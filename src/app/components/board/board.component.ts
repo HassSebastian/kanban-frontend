@@ -11,7 +11,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { DataService } from 'src/app/services/data.service';
-import { LoadTaskService } from 'src/app/services/load-task.service';
+import { LoadService } from 'src/app/services/load.service';
 
 @Component({
   selector: 'app-board',
@@ -22,11 +22,13 @@ export class BoardComponent {
   constructor(
     private dialog: MatDialog,
     private dataService: DataService,
-    public loadTaskService: LoadTaskService
+    public loadService: LoadService
   ) {}
 
   async ngOnInit() {
-    await this.loadTaskService.renderSite();
+    await this.loadService.renderSite();
+    await this.loadService.renderUsers();
+    
   }
 
   drop(event: CdkDragDrop<string[]>) {
