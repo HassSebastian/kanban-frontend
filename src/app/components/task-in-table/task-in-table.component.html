@@ -12,6 +12,7 @@
         (click)="button(1, $event)"
         matTooltip="Has description. Click to expand or collapse."
         matTooltipPosition="above"
+        *ngIf="task.description"
         >description</mat-icon
       >
       <mat-icon
@@ -19,6 +20,7 @@
         (click)="button(2, $event)"
         matTooltip="Has description. Click to expand or collapse."
         matTooltipPosition="above"
+        *ngIf="task.due_date"
         >date_range</mat-icon
       >
       <mat-icon
@@ -26,16 +28,21 @@
         (click)="button(3, $event)"
         matTooltip="Time spent / Time estimate"
         matTooltipPosition="above"
+        *ngIf="task.estimate"
         >access_time</mat-icon
       >
-      <span matTooltip="Time spent / Time estimate" matTooltipPosition="above"
+      <span
+        matTooltip="Time spent / Time estimate"
+        matTooltipPosition="above"
+        *ngIf="task.estimate"
         >0h / 12h</span
       >
     </div>
     <div
       class="avatar centerAll"
-      [style.border]="'2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'"
-
+      [style.border]="
+        '2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'
+      "
       matTooltip="{{ task.author }}"
       matTooltipPosition="above"
     >

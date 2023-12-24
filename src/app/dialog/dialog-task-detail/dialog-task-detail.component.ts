@@ -13,6 +13,8 @@ import { LoadService } from 'src/app/services/load.service';
 })
 export class DialogTaskDetailComponent {
   colors = this.dataService.colors;
+  task_status = this.dataService.task_status[this.task.status].name;
+  
   showTitleInput: boolean = false;
   showDescriptionInput: boolean = false;
 

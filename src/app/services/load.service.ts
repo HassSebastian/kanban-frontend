@@ -10,33 +10,36 @@ export class LoadService {
   tasks: any = [];
   error: string = '';
   members: any = [];
-  
+  addMemberArray: any = [];
 
   constructor(private http: HttpClient) {}
 
-
-async renderSite(){
-  try {
-    this.tasks = await this.loadTasks();
-  } catch (e) {
-    this.error = 'Fehler beim laden';
+  async renderSite() {
+    try {
+      this.tasks = await this.loadTasks();
+    } catch (e) {
+      this.error = 'Fehler beim laden der Seite';
+    }
   }
-}
-async renderUsers(){
-  try{
-    this.members = await this.loadAllUsers();
-  } catch (e) {
-    console.log("fehler beim Laden der User", e);
+  async renderUsers() {
+    try {
+      this.members = await this.loadAllUsers();
+    } catch (e) {
+      console.log('fehler beim Laden der User', e);
+    }
   }
-}
 
   loadTasks() {
     const url = environment.baseUrl + '/board/';
     return lastValueFrom(this.http.get(url));
   }
 
-  loadAllUsers(){
+  loadAllUsers() {
     const url = environment.baseUrl + '/api/get_all_users/';
     return lastValueFrom(this.http.get(url));
+  }
+
+  getAddMemberArray() {
+    return this.addMemberArray;
   }
 }

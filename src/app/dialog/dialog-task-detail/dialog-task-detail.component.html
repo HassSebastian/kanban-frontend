@@ -9,7 +9,6 @@
   </div>
 
   <div class="detailHead">
-    <!-- <div class="detailTaskName"><h2>Test</h2></div> -->
     <div class="changeContainer">
       <div
         class="title"
@@ -31,7 +30,7 @@
         <button (click)="updateTitle()"><strong>SAVE</strong></button>
       </div>
     </div>
-    <div class="detailWorkflow"><label>to-do</label></div>
+    <div class="detailWorkflow"><label>{{task_status}}</label></div>
   </div>
   <div class="detailProperties">
     <div class="propertieItemContainer">
@@ -62,20 +61,20 @@
         <div class="addMember centerAll"><mat-icon>add</mat-icon></div>
       </div>
     </div>
-    <div class="propertieItemContainer">
+    <div class="propertieItemContainer" *ngIf="task.lable">
       <label>Labels</label>
       <div class="propertieItem">
         <div class="label centerAll">Test Label</div>
         <div class="addLabel centerAll"><mat-icon>add</mat-icon></div>
       </div>
     </div>
-    <div class="propertieItemContainer">
+    <div class="propertieItemContainer" *ngIf="task.due_date">
       <label>Time Estimate</label>
       <div class="propertieItem">
         <div class="time">12h</div>
       </div>
     </div>
-    <div class="propertieItemContainer">
+    <div class="propertieItemContainer" *ngIf="task.due_date">
       <label>Due date</label>
       <div class="propertieItem">
         <div class="dueDate">

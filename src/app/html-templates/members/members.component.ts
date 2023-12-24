@@ -4,13 +4,24 @@ import { LoadService } from 'src/app/services/load.service';
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
-  styleUrls: ['./members.component.scss']
+  styleUrls: ['./members.component.scss'],
 })
 export class MembersComponent {
-  @Input() property!: string
-  members = this.loadService.members;
+  @Input() property!: string;
 
-  constructor(public loadService:LoadService){console.log(this.members);
+  addMemberArray:any;
+
+  constructor(public loadService: LoadService) {
   }
 
+  async ngOnInit() {
+    this.addMemberArray = await this.loadService.getAddMemberArray();
+    console.log(this.addMemberArray);
+    
+  }
+
+  selectedMember(index: number) {
+    this.addMemberArray[index].checked = true;
+    console.log('copy + index', this.addMemberArray);
+  }
 }

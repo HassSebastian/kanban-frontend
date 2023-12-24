@@ -16,18 +16,34 @@ export class DialogAddTaskComponent {
     public dataService: DataService,
     private dialogRef: DialogRef,
     @Inject(MAT_DIALOG_DATA) public data: { status: string },
-    private loadService: LoadService,
+    public loadService: LoadService,
     private http: HttpClient
   ) {}
 
   colors = this.dataService.colors;
+  addMemberArray = this.loadService.addMemberArray;
+  members = this.loadService.members;
+  description: string = '';
 
   showSelectColorList: boolean = false;
+  showDescription: boolean = false;
   selectedColorIndex: number = 0;
   taskTitle: string = '';
 
+  async ngOnInit() {
+    this.addMemberArray = await this.members.map((member: any) => ({
+      ...member,
+      checked: false,
+    }));
+    console.log('array ', this.addMemberArray);
+  }
+
   openCloseSelectColor() {
     this.showSelectColorList = !this.showSelectColorList;
+  }
+
+  openCloseDescription() {
+    this.showDescription = !this.showDescription;
   }
 
   selectedColor(index: number) {
@@ -39,10 +55,13 @@ export class DialogAddTaskComponent {
     const color = this.selectedColorIndex;
     const title = this.taskTitle;
     const status = this.data.status;
+    const description = this.description
 
     const url = environment.baseUrl + '/board/';
-    const taskData = { title: title, status: status, color: color };
+    const taskData = { title: title, status: status, color: color, description: description };
 
+    console.log("TaskData = ",taskData);
+    
     try {
       const response = await this.http.post(url, taskData).toPromise();
       console.log('Todo added successfully', response);
@@ -52,4 +71,5 @@ export class DialogAddTaskComponent {
       console.error('Error adding todo', error);
     }
   }
+
 }

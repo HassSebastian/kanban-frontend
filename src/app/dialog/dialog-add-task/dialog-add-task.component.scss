@@ -100,25 +100,31 @@
     .propertiesContainer {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
       .properties {
         display: flex;
         align-items: center;
         gap: 8px;
         border-radius: 4px;
         padding: 4px 6px;
-        cursor: pointer;
+        cursor: pointer; 
         &:hover {
           filter: drop-shadow(4px 4px 8px lightgrey);
         }
       }
     }
+    .textMembers{
+      margin-top: 16px;
+    }
     .membersContainer {
+      display: flex;
       font-size: 12px;
       margin-bottom: 30px;
+      margin-top: 16px;
       .membersBadges {
         display: flex;
         gap: 8px;
+        background-color: white;
         .members {
           width: 25px;
           height: 25px;
@@ -131,6 +137,11 @@
           border-radius: 50%;
           border: 2px solid yellow;
         }
+      }
+    }
+    .descriptionContainer{
+      input{
+        background-color: white;
       }
     }
   }

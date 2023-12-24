@@ -3,8 +3,21 @@
     <mat-icon>group</mat-icon> Members
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item *ngFor="let member of members">
-      <input type="checkbox" />{{ member.username }}
-    </button>
+    <header
+      style="
+        text-align: center;
+        padding: 3px 64px;
+        font-size: small;
+        border-bottom: 1px solid lightgrey;
+        background-color: rgba(0, 0, 0, 0.05);
+      "
+    >
+      Members
+    </header>
+    <div *ngFor="let member of addMemberArray; let i = index">
+      <label mat-menu-item *ngIf="!member.checked">
+        <span (click)="selectedMember(i)">{{ member.username }}</span>
+      </label>
+    </div>
   </mat-menu>
 </div>

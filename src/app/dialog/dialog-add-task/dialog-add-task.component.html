@@ -51,17 +51,27 @@
       <div>
         <app-members [property]="'add_member'"></app-members>
       </div>
-      <div class="properties"><mat-icon>label</mat-icon>Labels</div>
-      <div class="properties"><mat-icon>description</mat-icon>Description</div>
-      <div class="properties"><mat-icon>more_horiz</mat-icon>More</div>
-    </div>
-    <!-- membersContainer -->
-    <div class="membersContainer d-none">
-      Members
-      <div class="membersBadges">
-        <div class="members centerAll">SH</div>
-        <div class="membersPlus centerAll"><mat-icon>add</mat-icon></div>
+      <div class="properties" style="cursor: not-allowed;"><mat-icon>label</mat-icon>Labels</div>
+      <div class="properties" (click)="openCloseDescription()">
+        <mat-icon>description</mat-icon>Description
       </div>
+      <div class="properties" style="cursor: not-allowed;"><mat-icon>more_horiz</mat-icon>More</div>
+    </div>
+    <div class="textMembers">Members</div>
+    <div class="membersContainer">
+      <div class="membersBadges" *ngFor="let member of addMemberArray">
+        <div class="members centerAll">SH</div>
+      </div>
+      <span class="membersPlus centerAll"><mat-icon>add</mat-icon></span>
+    </div>
+    <div class="descriptionContainer" *ngIf="showDescription">
+      Description
+      <input
+        type="text"
+        name="description"
+        placeholder="Description"
+        [(ngModel)]="description"
+      />
     </div>
   </div>
   <footer>
