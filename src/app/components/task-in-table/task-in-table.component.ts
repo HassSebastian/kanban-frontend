@@ -30,6 +30,8 @@ export class TaskInTableComponent {
   openTaskDetail() {
     const task = this.task    
     this.dialog.open(DialogTaskDetailComponent, {data: task});
+    console.log(task);
+    
   }
 
   button(index: 1 | 2 | 3, event: Event) {

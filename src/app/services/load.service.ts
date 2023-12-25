@@ -24,6 +24,7 @@ export class LoadService {
   async renderUsers() {
     try {
       this.members = await this.loadAllUsers();
+      console.log('Members = ', this.members);
     } catch (e) {
       console.log('fehler beim Laden der User', e);
     }

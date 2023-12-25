@@ -13,8 +13,9 @@ import { LoadService } from 'src/app/services/load.service';
 })
 export class DialogTaskDetailComponent {
   colors = this.dataService.colors;
+  updateColorIndex: number = -1;
   task_status = this.dataService.task_status[this.task.status].name;
-  
+
   showTitleInput: boolean = false;
   showDescriptionInput: boolean = false;
 
@@ -22,8 +23,8 @@ export class DialogTaskDetailComponent {
     public dataService: DataService,
     @Inject(MAT_DIALOG_DATA) public task: any,
     private http: HttpClient,
-    private dialogRef:DialogRef,
-    private loadService:LoadService,
+    private dialogRef: DialogRef,
+    private loadService: LoadService
   ) {}
 
   cancelInput() {
@@ -33,10 +34,13 @@ export class DialogTaskDetailComponent {
 
   updateTitle() {}
 
+  updateColor(index:number) {
+    this.updateColorIndex = index;
+  }
+
   updateDescription() {}
 
-  async deleteTask(taskId:number) {
-    
+  async deleteTask(taskId: number) {
     const url = environment.baseUrl + '/board/' + taskId;
     try {
       await lastValueFrom(this.http.delete(url));

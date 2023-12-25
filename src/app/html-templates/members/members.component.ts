@@ -8,16 +8,12 @@ import { LoadService } from 'src/app/services/load.service';
 })
 export class MembersComponent {
   @Input() property!: string;
+  @Input() addMemberArray!: any;
 
-  addMemberArray:any;
+  constructor(public loadService: LoadService) {}
 
-  constructor(public loadService: LoadService) {
-  }
-
-  async ngOnInit() {
-    this.addMemberArray = await this.loadService.getAddMemberArray();
+  ngOnInit() {
     console.log(this.addMemberArray);
-    
   }
 
   selectedMember(index: number) {

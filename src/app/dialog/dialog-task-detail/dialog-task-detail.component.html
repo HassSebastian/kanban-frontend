@@ -1,10 +1,19 @@
 <div
   class="detailContainer"
-  [style.background-color]="'hsl(' + colors[task.color].color + ', 100%, 90%)'"
+  [style.background-color]="
+    updateColorIndex === -1
+      ? 'hsl(' + colors[task.color].color + ', 100%, 90%)'
+      : 'hsl(' + colors[updateColorIndex].color + ', 100%, 90%)'
+  "
 >
   <app-close-button></app-close-button>
 
-  <div class="delete centerAll" (click)="deleteTask(task.id)" matTooltip="delete" matTooltipPosition="above">
+  <div
+    class="delete centerAll"
+    (click)="deleteTask(task.id)"
+    matTooltip="delete"
+    matTooltipPosition="above"
+  >
     <mat-icon>delete</mat-icon>
   </div>
 
@@ -21,7 +30,11 @@
         <input
           value="{{ task.title }}"
           [style.border-bottom]="
-            '2px solid hsl(' + colors[task.color].color + ', 100%, 65%)'
+            updateColorIndex === -1
+              ? '2px solid hsl(' + colors[task.color].color + ', 100%, 65%)'
+              : '2px solid hsl(' +
+                colors[updateColorIndex].color +
+                ', 100%, 65%)'
           "
         />
       </div>
@@ -30,20 +43,34 @@
         <button (click)="updateTitle()"><strong>SAVE</strong></button>
       </div>
     </div>
-    <div class="detailWorkflow"><label>{{task_status}}</label></div>
+    <div class="detailWorkflow">
+      <label>{{ task_status }}</label>
+    </div>
   </div>
   <div class="detailProperties">
     <div class="propertieItemContainer">
       <label>Color</label>
       <button class="propertieItem" mat-button [matMenuTriggerFor]="menu">
-        <div class="color" style="background-color: yellow"></div>
-        <span>Yellow</span>
+        <div
+          class="color"
+          [style.background-color]="
+            updateColorIndex === -1
+              ? 'hsl(' + colors[task.color].color + ', 100%, 65%)'
+              : 'hsl(' + colors[updateColorIndex].color + ', 100%, 65%)'
+          "
+        ></div>
+        <span>{{
+          updateColorIndex === -1
+            ? colors[task.color].name
+            : colors[updateColorIndex].name
+        }}</span>
       </button>
       <mat-menu #menu="matMenu">
         <button
           class="buttonColor"
           mat-menu-item
           *ngFor="let color of colors; let i = index"
+          (click)="updateColor(i)"
         >
           <div class="menuColor">
             <div

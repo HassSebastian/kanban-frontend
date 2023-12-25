@@ -18,7 +18,13 @@ export class DialogAddTaskComponent {
     @Inject(MAT_DIALOG_DATA) public data: { status: string },
     public loadService: LoadService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.addMemberArray = this.members.map((member: any) => ({
+      ...member,
+      checked: false,
+    }));
+    console.log('array ', this.addMemberArray);
+  }
 
   colors = this.dataService.colors;
   addMemberArray = this.loadService.addMemberArray;
@@ -30,13 +36,7 @@ export class DialogAddTaskComponent {
   selectedColorIndex: number = 0;
   taskTitle: string = '';
 
-  async ngOnInit() {
-    this.addMemberArray = await this.members.map((member: any) => ({
-      ...member,
-      checked: false,
-    }));
-    console.log('array ', this.addMemberArray);
-  }
+  async ngOnInit() {}
 
   openCloseSelectColor() {
     this.showSelectColorList = !this.showSelectColorList;
@@ -55,13 +55,18 @@ export class DialogAddTaskComponent {
     const color = this.selectedColorIndex;
     const title = this.taskTitle;
     const status = this.data.status;
-    const description = this.description
+    const description = this.description;
 
     const url = environment.baseUrl + '/board/';
-    const taskData = { title: title, status: status, color: color, description: description };
+    const taskData = {
+      title: title,
+      status: status,
+      color: color,
+      description: description,
+    };
 
-    console.log("TaskData = ",taskData);
-    
+    console.log('TaskData = ', taskData);
+
     try {
       const response = await this.http.post(url, taskData).toPromise();
       console.log('Todo added successfully', response);
@@ -71,5 +76,7 @@ export class DialogAddTaskComponent {
       console.error('Error adding todo', error);
     }
   }
-
+  getAddMemberArray() {
+    return this.loadService.getAddMemberArray();
+  }
 }

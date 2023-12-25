@@ -49,18 +49,25 @@
     </div>
     <div class="propertiesContainer">
       <div>
-        <app-members [property]="'add_member'"></app-members>
+        <app-members
+          [property]="'add_member'"
+          [addMemberArray]="addMemberArray"
+        ></app-members>
       </div>
-      <div class="properties" style="cursor: not-allowed;"><mat-icon>label</mat-icon>Labels</div>
+      <div class="properties" style="cursor: not-allowed">
+        <mat-icon>label</mat-icon>Labels
+      </div>
       <div class="properties" (click)="openCloseDescription()">
         <mat-icon>description</mat-icon>Description
       </div>
-      <div class="properties" style="cursor: not-allowed;"><mat-icon>more_horiz</mat-icon>More</div>
+      <div class="properties" style="cursor: not-allowed">
+        <mat-icon>more_horiz</mat-icon>More
+      </div>
     </div>
     <div class="textMembers">Members</div>
     <div class="membersContainer">
-      <div class="membersBadges" *ngFor="let member of addMemberArray">
-        <div class="members centerAll">SH</div>
+      <div class="membersBadges" *ngFor="let member of getAddMemberArray()">
+        <div class="members centerAll" *ngIf="member.checked">SH</div>
       </div>
       <span class="membersPlus centerAll"><mat-icon>add</mat-icon></span>
     </div>
