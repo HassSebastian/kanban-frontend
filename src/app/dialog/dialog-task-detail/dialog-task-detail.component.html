@@ -2,7 +2,7 @@
   class="detailContainer"
   [style.background-color]="
     updateColorIndex === -1
-      ? 'hsl(' + colors[task.color].color + ', 100%, 90%)'
+      ? 'hsl(' + colors[updateTaskArray.color].color + ', 100%, 90%)'
       : 'hsl(' + colors[updateColorIndex].color + ', 100%, 90%)'
   "
 >
@@ -10,7 +10,7 @@
 
   <div
     class="delete centerAll"
-    (click)="deleteTask(task.id)"
+    (click)="deleteTask(updateTaskArray.id)"
     matTooltip="delete"
     matTooltipPosition="above"
   >
@@ -25,18 +25,18 @@
         *ngIf="!showTitleInput"
         [style.background-color]="
           updateColorIndex === -1
-            ? 'hsl(' + colors[task.color].color + ', 100%, 93%)'
+            ? 'hsl(' + colors[updateTaskArray.color].color + ', 100%, 93%)'
             : 'hsl(' + colors[updateColorIndex].color + ', 100%, 93%)'
         "
       >
-        {{ task.title }}
+        {{ updateTaskArray.title }}
       </div>
       <div class="changeField" *ngIf="showTitleInput">
         <input
-          value="{{ task.title }}"
+          value="{{ updateTaskArray.title }}"
           [style.border-bottom]="
             updateColorIndex === -1
-              ? '2px solid hsl(' + colors[task.color].color + ', 100%, 65%)'
+              ? '2px solid hsl(' + colors[updateTaskArray.color].color + ', 100%, 65%)'
               : '2px solid hsl(' +
                 colors[updateColorIndex].color +
                 ', 100%, 65%)'
@@ -60,13 +60,13 @@
           class="color"
           [style.background-color]="
             updateColorIndex === -1
-              ? 'hsl(' + colors[task.color].color + ', 100%, 65%)'
+              ? 'hsl(' + colors[updateTaskArray.color].color + ', 100%, 65%)'
               : 'hsl(' + colors[updateColorIndex].color + ', 100%, 65%)'
           "
         ></div>
         <span>{{
           updateColorIndex === -1
-            ? colors[task.color].name
+            ? colors[updateTaskArray.color].name
             : colors[updateColorIndex].name
         }}</span>
       </button>
@@ -93,20 +93,20 @@
         <div class="addMember centerAll"><mat-icon>add</mat-icon></div>
       </div>
     </div>
-    <div class="propertieItemContainer" *ngIf="task.lable">
+    <div class="propertieItemContainer" *ngIf="updateTaskArray.lable">
       <label>Labels</label>
       <div class="propertieItem">
         <div class="label centerAll">Test Label</div>
         <div class="addLabel centerAll"><mat-icon>add</mat-icon></div>
       </div>
     </div>
-    <div class="propertieItemContainer" *ngIf="task.due_date">
+    <div class="propertieItemContainer" *ngIf="updateTaskArray.due_date">
       <label>Time Estimate</label>
       <div class="propertieItem">
         <div class="time">12h</div>
       </div>
     </div>
-    <div class="propertieItemContainer" *ngIf="task.due_date">
+    <div class="propertieItemContainer" *ngIf="updateTaskArray.due_date">
       <label>Due date</label>
       <div class="propertieItem">
         <div class="dueDate">
@@ -124,11 +124,11 @@
       *ngIf="!showDescriptionInput"
       [style.background-color]="
         updateColorIndex === -1
-          ? 'hsl(' + colors[task.color].color + ', 100%, 93%)'
+          ? 'hsl(' + colors[updateTaskArray.color].color + ', 100%, 93%)'
           : 'hsl(' + colors[updateColorIndex].color + ', 100%, 93%)'
       "
     >
-      {{ task.description }}
+      {{ updateTaskArray.description }}
     </div>
 
     <div class="changeContainer" *ngIf="showDescriptionInput">

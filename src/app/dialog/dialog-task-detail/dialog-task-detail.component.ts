@@ -18,6 +18,7 @@ export class DialogTaskDetailComponent {
 
   showTitleInput: boolean = false;
   showDescriptionInput: boolean = false;
+  updateTaskArray = this.task;
 
   constructor(
     public dataService: DataService,
@@ -34,8 +35,10 @@ export class DialogTaskDetailComponent {
 
   updateTitle() {}
 
-  updateColor(index:number) {
+  updateColor(index: number) {
     this.updateColorIndex = index;
+    this.updateTaskArray.color =
+      this.updateColorIndex != -1 ? index : this.updateColorIndex;
   }
 
   updateDescription() {}
@@ -50,4 +53,16 @@ export class DialogTaskDetailComponent {
       console.error('Fehler beim Löschen:', error);
     }
   }
+
+  // async updateTask(taskId:number){
+  //   const url = environment.baseUrl + '/board/' + taskId;
+  //   const updateTask =
+  //   try {
+  //     await lastValueFrom(this.http.put(url));
+  //     // this.loadService.renderSite();
+  //     // this.dialogRef.close();
+  //   } catch (error) {
+  //     console.error('Fehler beim Update:', error);
+  //   }
+  // }
 }
