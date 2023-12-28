@@ -12,15 +12,15 @@ import { LoadService } from 'src/app/services/load.service';
   styleUrls: ['./dialog-task-detail.component.scss'],
 })
 export class DialogTaskDetailComponent {
-  colors = this.dataService.colors;
   updateColorIndex: number = -1;
-  task_status = this.dataService.task_status[this.task.status].name;
-
   showTitleInput: boolean = false;
   showDescriptionInput: boolean = false;
+
   updateTaskArray = this.task;
   newTitle: string = this.updateTaskArray.title;
   newDescription: string = this.updateTaskArray.description;
+  task_status = this.dataService.task_status[this.task.status].name;
+  colors = this.dataService.colors;
 
   constructor(
     public dataService: DataService,
@@ -35,8 +35,9 @@ export class DialogTaskDetailComponent {
     this.showDescriptionInput = false;
   }
 
-  updateTitle() {
+  updateTitleAndDescription() {
     this.updateTaskArray.title = this.newTitle;
+    this.updateTaskArray.description = this.newDescription;
     this.updateTask();
     this.cancelInput();
   }
@@ -48,11 +49,19 @@ export class DialogTaskDetailComponent {
     this.updateTask();
   }
 
-  updateDescription() {
-    this.updateTaskArray.description = this.newDescription;
-    this.updateTask();
-    this.cancelInput();
+  async updateTask() {
+    const taskId = this.updateTaskArray.id;
+    const url = environment.baseUrl + '/board/' + taskId;
+    const updateTask = this.updateTaskArray;
 
+    try {
+      const response = await this.http.put(url, updateTask).toPromise();
+      console.log('Task erfolgreich aktualisiert:', response);
+      this.loadService.renderSite();
+      // this.dialogRef.close();
+    } catch (error) {
+      console.error('Fehler beim Task-Update:', error);
+    }
   }
 
   async deleteTask(taskId: number) {
@@ -63,21 +72,6 @@ export class DialogTaskDetailComponent {
       this.dialogRef.close();
     } catch (error) {
       console.error('Fehler beim Löschen:', error);
-    }
-  }
-
-  async updateTask() {
-    const taskId = this.updateTaskArray.id;
-    const url = environment.baseUrl + '/board/' + taskId;
-    const updateTask = this.updateTaskArray;
-
-    try {
-      const response = await this.http.put(url, updateTask).toPromise();
-      console.log('Todo erfolgreich aktualisiert:', response);
-      this.loadService.renderSite();
-      // this.dialogRef.close();
-    } catch (error) {
-      console.error('Fehler beim Update:', error);
     }
   }
 }

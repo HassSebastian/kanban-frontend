@@ -37,16 +37,22 @@
           [(ngModel)]="newTitle"
           [style.border-bottom]="
             updateColorIndex === -1
-              ? '2px solid hsl(' + colors[updateTaskArray.color].color + ', 100%, 65%)'
+              ? '2px solid hsl(' +
+                colors[updateTaskArray.color].color +
+                ', 100%, 65%)'
               : '2px solid hsl(' +
                 colors[updateColorIndex].color +
                 ', 100%, 65%)'
           "
         />
+        <div>{{newTitle.length}}/50</div>
+
       </div>
       <div class="buttonField" *ngIf="showTitleInput">
         <button (click)="cancelInput()">CANCEL</button>
-        <button (click)="updateTitle()"><strong>SAVE</strong></button>
+        <button (click)="updateTitleAndDescription()">
+          <strong>SAVE</strong>
+        </button>
       </div>
     </div>
     <div class="detailWorkflow">
@@ -137,13 +143,16 @@
         <input
           [value]="task?.description"
           [(ngModel)]="newDescription"
-
           [placeholder]="task?.description ? '' : 'Description'"
         />
+        <div>{{newDescription.length}}/200</div>
+
       </div>
       <div class="buttonField">
         <button (click)="cancelInput()">CANCEL</button>
-        <button (click)="updateDescription()"><strong>SAVE</strong></button>
+        <button (click)="updateTitleAndDescription()">
+          <strong>SAVE</strong>
+        </button>
       </div>
     </div>
   </div>
