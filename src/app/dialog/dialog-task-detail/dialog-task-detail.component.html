@@ -34,6 +34,7 @@
       <div class="changeField" *ngIf="showTitleInput">
         <input
           value="{{ updateTaskArray.title }}"
+          [(ngModel)]="newTitle"
           [style.border-bottom]="
             updateColorIndex === -1
               ? '2px solid hsl(' + colors[updateTaskArray.color].color + ', 100%, 65%)'
@@ -135,6 +136,8 @@
       <div class="changeField">
         <input
           [value]="task?.description"
+          [(ngModel)]="newDescription"
+
           [placeholder]="task?.description ? '' : 'Description'"
         />
       </div>

@@ -19,6 +19,8 @@ export class DialogTaskDetailComponent {
   showTitleInput: boolean = false;
   showDescriptionInput: boolean = false;
   updateTaskArray = this.task;
+  newTitle: string = this.updateTaskArray.title;
+  newDescription: string = this.updateTaskArray.description;
 
   constructor(
     public dataService: DataService,
@@ -33,15 +35,25 @@ export class DialogTaskDetailComponent {
     this.showDescriptionInput = false;
   }
 
-  updateTitle() {}
+  updateTitle() {
+    this.updateTaskArray.title = this.newTitle;
+    this.updateTask();
+    this.cancelInput();
+  }
 
   updateColor(index: number) {
     this.updateColorIndex = index;
     this.updateTaskArray.color =
       this.updateColorIndex != -1 ? index : this.updateColorIndex;
+    this.updateTask();
   }
 
-  updateDescription() {}
+  updateDescription() {
+    this.updateTaskArray.description = this.newDescription;
+    this.updateTask();
+    this.cancelInput();
+
+  }
 
   async deleteTask(taskId: number) {
     const url = environment.baseUrl + '/board/' + taskId;
@@ -54,15 +66,18 @@ export class DialogTaskDetailComponent {
     }
   }
 
-  // async updateTask(taskId:number){
-  //   const url = environment.baseUrl + '/board/' + taskId;
-  //   const updateTask =
-  //   try {
-  //     await lastValueFrom(this.http.put(url));
-  //     // this.loadService.renderSite();
-  //     // this.dialogRef.close();
-  //   } catch (error) {
-  //     console.error('Fehler beim Update:', error);
-  //   }
-  // }
+  async updateTask() {
+    const taskId = this.updateTaskArray.id;
+    const url = environment.baseUrl + '/board/' + taskId;
+    const updateTask = this.updateTaskArray;
+
+    try {
+      const response = await this.http.put(url, updateTask).toPromise();
+      console.log('Todo erfolgreich aktualisiert:', response);
+      this.loadService.renderSite();
+      // this.dialogRef.close();
+    } catch (error) {
+      console.error('Fehler beim Update:', error);
+    }
+  }
 }
