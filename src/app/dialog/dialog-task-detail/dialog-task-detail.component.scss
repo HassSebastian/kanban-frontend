@@ -27,6 +27,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
+      width: fit-content;
       margin: 25px 0;
       label {
         cursor: pointer;
@@ -122,13 +123,14 @@ label {
   font-size: 12px;
 }
 
-.title {
+.inputField {
   width: 95%;
   height: fit-content;
   font-size: 20px;
   font-weight: 500;
   margin-top: 6px;
   padding: 8px 8px 8px;
+  cursor: pointer;
 }
 
 .changeField {
