@@ -22,12 +22,12 @@ export class LoadService {
     }
   }
   async renderUsers() {
-    try {
-      this.members = await this.loadAllUsers();
-      console.log('Members = ', this.members);
-    } catch (e) {
-      console.log('fehler beim Laden der User', e);
-    }
+    // try {
+    //   this.members = await this.loadAllUsers();
+    //   console.log('Members = ', this.members);
+    // } catch (e) {
+    //   console.log('fehler beim Laden der User', e);
+    // }
   }
 
   loadTasks() {
@@ -37,7 +37,7 @@ export class LoadService {
 
   loadAllUsers() {
     const url = environment.baseUrl + '/api/get_all_users/';
-    return lastValueFrom(this.http.get(url));
+    return this.http.get(url);
   }
 
   getAddMemberArray() {

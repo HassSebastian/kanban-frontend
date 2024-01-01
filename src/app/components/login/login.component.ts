@@ -8,14 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
   constructor(private authService: AuthService, private router: Router) {}
 
   async login() {
     try {
       let resp: any = await this.authService.loginWithUsernameAndPassword(
-        this.username,
+        this.email,
         this.password
       );
       localStorage.setItem('token', resp['token']);

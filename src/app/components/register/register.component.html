@@ -4,9 +4,23 @@
     <form (ngSubmit)="registerUser()">
         <input
           type="text"
-          name="username"
-          [(ngModel)]="username"
-          placeholder="Username"
+          name="first_name"
+          [(ngModel)]="first_name"
+          placeholder="First Name"
+          required
+        />
+        <input
+          type="text"
+          name="last_name"
+          [(ngModel)]="last_name"
+          placeholder="Last Name"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Email Adresse"
           required
         />
         <input

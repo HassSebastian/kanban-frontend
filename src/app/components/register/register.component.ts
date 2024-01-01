@@ -10,15 +10,19 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  username: string = '';
+  first_name: string = '';
+  last_name: string = '';
+  email: string = '';
   password: string = '';
 
   constructor(private router:Router, private authService:AuthService) {}
 
   async registerUser() {
     try {
-      let resp = await this.authService.registrWithUsernameAndPassword(
-        this.username,
+      let resp = await this.authService.registrWithUsernameEmailAndPassword(
+        this.first_name,
+        this.last_name,
+        this.email,
         this.password
       );
       this.router.navigateByUrl('login')

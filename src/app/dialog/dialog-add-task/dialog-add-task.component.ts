@@ -18,11 +18,13 @@ export class DialogAddTaskComponent {
     @Inject(MAT_DIALOG_DATA) public data: { status: string },
     public loadService: LoadService,
     private http: HttpClient
-  ) {
-    this.addMemberArray = this.members.map((member: any) => ({
-      ...member,
-      checked: false,
-    }));
+  ) { 
+    // this.addMemberArray = this.members.map((member: any) => ({
+    //   ...member,
+    //   checked: false,
+    // }));
+
+    this.addMemberArray = this.members;
     console.log('array ', this.addMemberArray);
   }
 
