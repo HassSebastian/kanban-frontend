@@ -54,6 +54,7 @@
           color: white;
         }
         .badges {
+
           div {
             width: 23px;
             height: 23px;
@@ -97,6 +98,7 @@
         }
       }
       .headRight {
+        cursor: default;
       }
     }
     .tableHead {
@@ -140,6 +142,8 @@
   }
   
   .badges {
+    filter: drop-shadow(0 0 2px grey);
+
     div {
       width: 23px;
       height: 23px;
@@ -147,6 +151,8 @@
       background-color: rgb(250, 250, 250);
       font-size: 12px;
       font-weight: 700;
+      text-shadow: 0 0 2px black;
+
     }
   }
   .cdk-drag-preview {

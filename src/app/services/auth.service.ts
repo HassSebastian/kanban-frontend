@@ -9,10 +9,13 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public loginWithUsernameAndPassword(email: string, password: string) {
+  public loginWithUsernameAndPassword(
+    username: string,
+    password: string
+  ) {
     const url = environment.baseUrl + '/login/';
     const body = {
-      email: email,
+      username: username,
       password: password,
     };
     return lastValueFrom(this.http.post(url, body));
@@ -22,14 +25,16 @@ export class AuthService {
     first_name: string,
     last_name: string,
     email: string,
+    username: string,
     password: string
   ) {
-    const url = environment.baseUrl + '/members/';
+    const url = environment.baseUrl + '/regist/';
     const body = {
       first_name: first_name,
       last_name: last_name,
       email: email,
-      password: password,
+      username: username,
+      password1: password,
     };
     return lastValueFrom(this.http.post(url, body));
   }

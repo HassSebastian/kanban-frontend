@@ -38,16 +38,21 @@
         >0h / 12h</span
       >
     </div>
-    <div
-      class="avatar centerAll"
-      [style.border]="
-        '2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'
-      "
-      matTooltip="{{ task.author }}"
-      matTooltipPosition="above"
-    >
-      SH
-    </div>
+    <!-- <div class="collaboratorContainer"> -->
+      <app-collaborators [task]="task" ></app-collaborators>
+      <!-- <div
+        class="collaborator centerAll"
+        *ngFor="let collaborator of task.collaborator"
+        [style.border]="
+          '2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'
+        "
+        matTooltip="{{ collaboratorName(collaborator) }}"
+        [style.color]="collaboratorInitialsColor(collaborator)"
+        matTooltipPosition="above"
+      >
+        {{collaboratorInitials(collaborator)}}
+      </div> -->
+    <!-- </div> -->
   </div>
   <div class="taskDescription" *ngIf="openDescription">
     {{ task.description }}

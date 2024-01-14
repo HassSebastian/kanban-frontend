@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddTaskComponent } from 'src/app/dialog/dialog-add-task/dialog-add-task.component';
 
+
 @Component({
   selector: 'app-green-plus',
   templateUrl: './green-plus.component.html',
@@ -14,7 +15,6 @@ export class GreenPlusComponent {
 
 
   ngOnInit() {
-    // this.dialog.open(DialogAddTaskComponent);
   }
 
   openAddTask() {

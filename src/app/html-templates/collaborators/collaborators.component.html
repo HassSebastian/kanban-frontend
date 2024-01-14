@@ -1,0 +1,12 @@
+<div class="collaboratorContainer">
+<div
+  class="collaborator centerAll"
+  *ngFor="let collaborator of task.collaborator"
+  [style.border]="'2px solid hsl(' + colors[task.color].color + ', 100%, 50%)'"
+  matTooltip="{{ collaboratorName(collaborator) }}"
+  [style.color]="collaboratorInitialsColor(collaborator)"
+  matTooltipPosition="above"
+>
+  {{ collaboratorInitials(collaborator) }}
+</div>
+</div>

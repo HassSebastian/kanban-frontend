@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogAddTaskComponent } from 'src/app/dialog/dialog-add-task/dialog-add-task.component';
-import { DialogTaskDetailComponent } from 'src/app/dialog/dialog-task-detail/dialog-task-detail.component';
 import {
   CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  CdkDropListGroup,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { DataService } from 'src/app/services/data.service';
-import { LoadService } from 'src/app/services/load.service';
+import { CrudService } from 'src/app/services/crud.service';
+
 
 @Component({
   selector: 'app-board',
@@ -20,15 +15,16 @@ import { LoadService } from 'src/app/services/load.service';
 })
 export class BoardComponent {
   constructor(
-    private dialog: MatDialog,
     private dataService: DataService,
-    public loadService: LoadService
+    public crudService: CrudService
   ) {}
+  
+  colors = this.dataService.colors;
 
   async ngOnInit() {
-    await this.loadService.renderSite();
-    await this.loadService.renderUsers();
-    
+    await this.crudService.renderTasks();
+    await this.crudService.loadMembers();
+    this.crudService.loggedUserData();
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -46,5 +42,13 @@ export class BoardComponent {
         event.currentIndex
       );
     }
+  }
+
+  loggedUserInitials() {
+    return this.crudService.loggedUserInitials();
+  }
+
+  loggedUserInitialsColor() {
+    return this.crudService.loggedUserInitialsColor();
   }
 }

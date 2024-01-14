@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   constructor() {}
 
+
   colors = [
     { name: 'Yellow', color: '60', index: 0 },
     { name: 'Blue', color: '240', index: 1 },

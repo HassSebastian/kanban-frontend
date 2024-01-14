@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DialogAddTaskComponent } from './dialog/dialog-add-task/dialog-add-task.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogTaskDetailComponent } from './dialog/dialog-task-detail/dialog-task-detail.component';
@@ -21,6 +21,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { MembersComponent } from './html-templates/members/members.component';
+import { CollaboratorsComponent } from './html-templates/collaborators/collaborators.component';
+import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { MembersComponent } from './html-templates/members/members.component';
     BoardComponent,
     RegisterComponent,
     MembersComponent,
+    CollaboratorsComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,7 @@ import { MembersComponent } from './html-templates/members/members.component';
       useClass: AuthInterceptorService,
       multi: true,
     },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
   ],
   bootstrap: [AppComponent],
 })

@@ -7,7 +7,6 @@
   "
 >
   <app-close-button></app-close-button>
-
   <div
     class="delete centerAll"
     (click)="deleteTask(updateTaskArray.id)"
@@ -45,8 +44,7 @@
                 ', 100%, 65%)'
           "
         />
-        <div>{{newTitle.length}}/50</div>
-
+        <div>{{ newTitle.length }}/50</div>
       </div>
       <div class="buttonField" *ngIf="showTitleInput">
         <button (click)="cancelInput()">CANCEL</button>
@@ -56,13 +54,36 @@
       </div>
     </div>
     <div class="detailWorkflow">
-      <label>{{ task_status }}</label>
+      <label>Status</label>
+      <button
+        mat-button
+        class="buttonContainer"
+        [matMenuTriggerFor]="statusMenu"
+      >
+        {{
+          updateStatusIndex === -1
+            ? task_status
+            : dataService.task_status[updateStatusIndex].name
+        }}
+      </button>
+      <mat-menu #statusMenu="matMenu">
+        <button
+          class="buttonStatus"
+          mat-menu-item
+          *ngFor="let status of task_status_menu; let i = index"
+          (click)="updateStatus(i)"
+        >
+          <div class="menuStatus">
+            <span>{{ status.name }}</span>
+          </div>
+        </button>
+      </mat-menu>
     </div>
   </div>
   <div class="detailProperties">
     <div class="propertieItemContainer">
       <label>Color</label>
-      <button class="propertieItem" mat-button [matMenuTriggerFor]="menu">
+      <button class="propertieItem" mat-button [matMenuTriggerFor]="colorMenu">
         <div
           class="color"
           [style.background-color]="
@@ -77,7 +98,7 @@
             : colors[updateColorIndex].name
         }}</span>
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #colorMenu="matMenu">
         <button
           class="buttonColor"
           mat-menu-item
@@ -96,8 +117,11 @@
     <div class="propertieItemContainer">
       <label>Members</label>
       <div class="propertieItem">
-        <div class="member centerAll" style="color: blue">SH</div>
-        <div class="addMember centerAll"><mat-icon>add</mat-icon></div>
+        <app-collaborators [task]="task"></app-collaborators>
+        <div class="addMember centerAll">
+          <mat-icon>add</mat-icon>
+          <app-members [property]="'edit_member'" [task]="task"></app-members>
+        </div>
       </div>
     </div>
     <div class="propertieItemContainer" *ngIf="updateTaskArray.lable">
@@ -145,8 +169,7 @@
           [(ngModel)]="newDescription"
           [placeholder]="task?.description ? '' : 'Description'"
         />
-        <div>{{newDescription.length}}/200</div>
-
+        <div>{{ newDescription.length }}/200</div>
       </div>
       <div class="buttonField">
         <button (click)="cancelInput()">CANCEL</button>

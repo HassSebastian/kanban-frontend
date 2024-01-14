@@ -16,7 +16,7 @@
           '2px solid hsl(' + colors[selectedColorIndex].color + ', 100%, 65%)'
         "
       />
-      <div class="counterTitle">{{taskTitle.length}}/50</div>
+      <div class="counterTitle">{{ taskTitle.length }}/50</div>
     </div>
     <div class="colorContainer">
       <button (click)="openCloseSelectColor()">
@@ -51,10 +51,7 @@
     </div>
     <div class="propertiesContainer">
       <div>
-        <app-members
-          [property]="'add_member'"
-          [addMemberArray]="addMemberArray"
-        ></app-members>
+        <app-members [property]="'add_member'"></app-members>
       </div>
       <div class="properties" style="cursor: not-allowed">
         <mat-icon>label</mat-icon>Labels
@@ -66,12 +63,16 @@
         <mat-icon>more_horiz</mat-icon>More
       </div>
     </div>
-    <div class="textMembers">Members</div>
-    <div class="membersContainer">
-      <div class="membersBadges" *ngFor="let member of getAddMemberArray()">
-        <div class="members centerAll" *ngIf="member.checked">SH</div>
+    <div *ngIf="membersSelectForTask.length > 0">
+      <div class="textMembers">Members</div>
+      <div class="membersContainer">
+        <div class="membersBadges" *ngFor="let member of allMembers">
+          <div class="members centerAll" *ngIf="member.checked">
+            {{ member.initials }}
+          </div>
+        </div>
+        <span class="membersPlus centerAll"><mat-icon>add</mat-icon></span>
       </div>
-      <span class="membersPlus centerAll"><mat-icon>add</mat-icon></span>
     </div>
     <div class="descriptionContainer" *ngIf="showDescription">
       Description
@@ -82,12 +83,12 @@
         [(ngModel)]="description"
         maxlength="200"
       />
-      <div class="counterDescription">{{description.length}}/200</div>
+      <div class="counterDescription">{{ description.length }}/200</div>
     </div>
   </div>
   <footer>
-    <button>Save & add more</button>
-    <button>Save & open details</button>
-    <button (click)="saveAndClose()">Save & close</button>
+    <button (click)="saveAnd('more')">Save & add more</button>
+    <button (click)="saveAnd('detail')">Save & open details</button>
+    <button (click)="saveAnd('close')">Save & close</button>
   </footer>
 </div>

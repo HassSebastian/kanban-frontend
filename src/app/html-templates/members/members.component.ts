@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { LoadService } from 'src/app/services/load.service';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-members',
@@ -8,16 +8,30 @@ import { LoadService } from 'src/app/services/load.service';
 })
 export class MembersComponent {
   @Input() property!: string;
-  @Input() addMemberArray!: any;
+  @Input() task!: any;
+  allMembers = this.crudService.allMembers;
+  membersSelectForTask = this.crudService.membersSelectForTask;
+  // memberCheckbox: boolean = true;
 
-  constructor(public loadService: LoadService) {}
+  constructor(public crudService: CrudService) {}
 
   ngOnInit() {
-    console.log(this.addMemberArray);
+    if (this.property === 'edit_member') {
+      this.membersSelectForTask = this.task.collaborator;
+    }
   }
 
-  selectedMember(index: number) {
-    this.addMemberArray[index].checked = true;
-    console.log('copy + index', this.addMemberArray);
+  selectedMember(member: any) {
+    member.checked = !member.checked;
+    if (member.checked) {
+      this.membersSelectForTask.push(member.user_id);
+    } else {
+      const index = this.membersSelectForTask.indexOf(member.user_id);
+      this.membersSelectForTask.splice(index, 1);
+    }
+    if (this.property === 'edit_member') {
+      this.task.collaborator = this.membersSelectForTask;
+      this.crudService.updateTask(this.task.id, this.task);
+    }
   }
 }
