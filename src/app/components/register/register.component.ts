@@ -34,15 +34,14 @@ export class RegisterComponent {
         this.password
       );
       this.router.navigateByUrl('login');
-    } catch (e) {
+    } catch (error) {
       this.dialog.open(ErrorDialogComponent, {
         data: {
           title: 'Registrierung',
           message: 'registrierung fehlgeschlagen',
         },
       });
-
-      console.error(e);
+      console.error(error);
     }
   }
 }

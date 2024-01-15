@@ -17,17 +17,21 @@ export class CrudService {
   loggedUserId: number = 0;
   colors = this.dataService.colors;
 
-  constructor(private http: HttpClient, private dataService: DataService, private dialog:MatDialog) {}
+  constructor(
+    private http: HttpClient,
+    private dataService: DataService,
+    private dialog: MatDialog
+  ) {}
 
   async renderTasks() {
     try {
       this.tasks = await this.loadTasks();
-    } catch (e) {
-      this.dialog.open(ErrorDialogComponent, {
-        data: { title: 'Task Error', message: 'Fehler beim laden der Tasks' },
-      });
-
-      console.log((e = 'Fehler beim laden der Tasks'));
+    } catch (error) {
+      this.serverError(error)
+      // this.dialog.open(ErrorDialogComponent, {
+      //   data: { title: 'Task Error', message: 'Fehler beim laden der Tasks' },
+      // });
+      // console.log((error = 'Fehler beim laden der Tasks'));
     }
   }
 
@@ -35,8 +39,16 @@ export class CrudService {
     try {
       let members = await this.loadAllMembers();
       this.allMembers = members;
-    } catch (e) {
-      console.log('fehler beim Laden der User', e);
+    } catch (error) {
+      console.log('fehler beim Laden der User', error);
+      this.serverError(error)
+      // if (error instanceof HttpErrorResponse) {
+      //   if (error.status === 0) {
+      //     this.dialog.open(ErrorDialogComponent, {
+      //       data: { title: 'Server Error', message: 'Server nicht erreichbar' },
+      //     });
+      //   }
+      // }
     }
   }
 
@@ -96,6 +108,14 @@ export class CrudService {
       this.renderTasks();
     } catch (error) {
       console.error('Fehler beim Löschen:', error);
+      this.serverError(error)
+      // if (error instanceof HttpErrorResponse) {
+      //   if (error.status === 0) {
+      //     this.dialog.open(ErrorDialogComponent, {
+      //       data: { title: 'Server Error', message: 'Server nicht erreichbar' },
+      //     });
+      //   }
+      // }
     }
   }
 
@@ -107,6 +127,14 @@ export class CrudService {
       this.renderTasks();
     } catch (error) {
       console.error('Fehler beim Task-Update:', error);
+      this.serverError(error)
+      // if (error instanceof HttpErrorResponse) {
+      //   if (error.status === 0) {
+      //     this.dialog.open(ErrorDialogComponent, {
+      //       data: { title: 'Server Error', message: 'Server nicht erreichbar' },
+      //     });
+      //   }
+      // }
     }
   }
 
@@ -118,7 +146,36 @@ export class CrudService {
       console.log('Todo added successfully', response);
       this.renderTasks();
     } catch (error) {
-      throw error;
+      // throw error;
+      console.warn('Save Error = ', error);
+      this.serverError(error)
+      // if (error instanceof HttpErrorResponse) {
+      //   if (error.status === 0) {
+      //     this.dialog.open(ErrorDialogComponent, {
+      //       data: { title: 'Server Error', message: 'Server nicht erreichbar' },
+      //     });
+      //   }
+      //   if (error.status === 400) {
+      //     this.dialog.open(ErrorDialogComponent, {
+      //       data: { title: 'Task Titel', message: error.error.title },
+      //     });
+      //   }
+      // }
+    }
+  }
+
+  serverError(error:any) {
+    if (error instanceof HttpErrorResponse) {
+      if (error.status === 0) {
+        this.dialog.open(ErrorDialogComponent, {
+          data: { title: 'Server Error', message: 'Server nicht erreichbar' },
+        });
+      }
+      if (error.status === 400) {
+        this.dialog.open(ErrorDialogComponent, {
+          data: { title: 'Task Titel', message: error.error.title },
+        });
+      }
     }
   }
 }

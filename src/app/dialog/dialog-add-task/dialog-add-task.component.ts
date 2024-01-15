@@ -14,9 +14,9 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class DialogAddTaskComponent {
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { status: string },
     public dataService: DataService,
     private dialogRef: DialogRef,
-    @Inject(MAT_DIALOG_DATA) public data: { status: string },
     public crudService: CrudService,
     private dialog: MatDialog
   ) {}
@@ -51,15 +51,15 @@ export class DialogAddTaskComponent {
     this.openCloseSelectColor();
   }
 
-  saveAnd(option: string) {
-    try {
-      this.saveAndMethod(option);
-    } catch (error) {
-      this.saveAndError(error);
-    }
-  }
+  // saveAnd(option: string) {
+  //   // try {
+  //     this.saveAndMethod(option);
+  //   // } catch (error) {
+  //     // this.saveAndError(error);
+  //   // }
+  // }
 
-  async saveAndMethod(option: string) {
+  async saveAnd(option: string) {
     if (option === 'more' && !this.saveAndMore) {
       await this.crudService.saveTask(this.createTaskData());
       this.saveAndMore = true;
@@ -80,21 +80,21 @@ export class DialogAddTaskComponent {
     }
   }
 
-  saveAndError(error: any) {
-    console.warn('Save Error = ', error);
-    if (error instanceof HttpErrorResponse) {
-      if (error.status === 0) {
-        this.dialog.open(ErrorDialogComponent, {
-          data: { title: '', message: 'Server nicht erreichbar' },
-        });
-      }
-      if (error.status === 400) {
-        this.dialog.open(ErrorDialogComponent, {
-          data: { title: 'Task Titel', message: error.error.title },
-        });
-      }
-    }
-  }
+  // saveAndError(error: any) {
+  //   console.warn('Save Error = ', error);
+  //   if (error instanceof HttpErrorResponse) {
+  //     if (error.status === 0) {
+  //       this.dialog.open(ErrorDialogComponent, {
+  //         data: { title: '', message: 'Server nicht erreichbar' },
+  //       });
+  //     }
+  //     if (error.status === 400) {
+  //       this.dialog.open(ErrorDialogComponent, {
+  //         data: { title: 'Task Titel', message: error.error.title },
+  //       });
+  //     }
+  //   }
+  // }
 
   createTaskData() {
     const color = this.selectedColorIndex;

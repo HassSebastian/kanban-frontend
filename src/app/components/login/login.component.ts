@@ -40,7 +40,6 @@ export class LoginComponent {
         this.dialog.open(ErrorDialogComponent, {
           data: { title: 'Login', message: 'login fehlgeschlagen' },
         });
-
         console.error('Fehler =', error);
       }
     }

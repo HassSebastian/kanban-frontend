@@ -72,13 +72,13 @@ export class DialogTaskDetailComponent {
     this.crudService.updateTask(taskId, updateTask);
   }
 
-  deleteTask(taskId: number) {
-    try {
-      this.crudService.deleteTask(taskId);
+  async deleteTask(taskId: number) {
+    // try {
+      await this.crudService.deleteTask(taskId);
       this.dialogRef.close();
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+      // throw error;
+    // }
   }
 
   memberCheckboxFromTask() {
