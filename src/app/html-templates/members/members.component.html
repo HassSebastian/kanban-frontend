@@ -8,6 +8,7 @@
     </div>
   </button>
   <mat-menu #menu="matMenu">
+
     <header
       style="
         text-align: center;
@@ -19,6 +20,7 @@
     >
       Members
     </header>
+    
     <div *ngFor="let member of allMembers">
       <label mat-menu-item>
         <input

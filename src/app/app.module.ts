@@ -23,6 +23,13 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { MembersComponent } from './html-templates/members/members.component';
 import { CollaboratorsComponent } from './html-templates/collaborators/collaborators.component';
 import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ProgressBarComponent } from './html-templates/progress-bar/progress-bar.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -38,6 +45,7 @@ import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.compone
     MembersComponent,
     CollaboratorsComponent,
     ErrorDialogComponent,
+    ProgressBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +58,11 @@ import { ErrorDialogComponent } from './dialog/error-dialog/error-dialog.compone
     DragDropModule,
     FormsModule,
     HttpClientModule,
+    MatProgressBarModule,
+    MatInputModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatCardModule, MatDatepickerModule, MatNativeDateModule
   ],
   providers: [
     {

@@ -19,10 +19,10 @@
       </div>
       <div
         class="badges centerAll"
-        matTooltip="Info about the action"
+        matTooltip="{{ loggedUserName() }}"
         matTooltipPosition="above"
       >
-        <div class="centerAll"></div>
+        <div class="centerAll initials">{{ loggedUserInitials() }}</div>
       </div>
     </div>
   </header>
@@ -33,43 +33,66 @@
       <div class="badges centerAll hoverBorder">
         <div
           class="centerAll"
-          matTooltip="Info about the action"
+          matTooltip="{{ loggedUserName() }}"
           matTooltipPosition="above"
           [style.color]="loggedUserInitialsColor()"
         >
-          {{loggedUserInitials()}}
+          {{ loggedUserInitials() }}
         </div>
       </div>
-      <div class="badges centerAll hoverGreen">
-        <div class="centerAll">+</div>
-      </div>
     </div>
-    <div class="headRight">#</div>
+    <i
+      class="material-icons"
+      (click)="logout()"
+      matTooltip="Logout"
+      matTooltipPosition="above"
+      >logout</i
+    >
+    <!-- <div class="headRight">#</div> -->
+  </div>
+  <div class="progressBar">
+    <app-progress-bar *ngIf="crudService.progressBar"></app-progress-bar>
   </div>
 
   <div class="tableHead">
     <div class="tableField">
       <div class="tableDescription">
         To-do
-        <app-green-plus [status]="0"></app-green-plus>
+        <app-green-plus
+          [status]="0"
+          matTooltip="Add-Task To-do"
+          matTooltipPosition="above"
+        ></app-green-plus>
       </div>
     </div>
     <div class="tableField">
       <div class="tableDescription">
         Do today
-        <app-green-plus [status]="1"></app-green-plus>
+        <app-green-plus
+          [status]="1"
+          matTooltip="Add-Task Do today"
+          matTooltipPosition="above"
+        ></app-green-plus>
       </div>
     </div>
     <div class="tableField">
       <div class="tableDescription">
         In progress
-        <app-green-plus [status]="2"></app-green-plus>
+        <app-green-plus
+          [status]="2"
+          matTooltip="Add-Task In Progress"
+          matTooltipPosition="above"
+        ></app-green-plus>
       </div>
     </div>
     <div class="tableField">
       <div class="tableDescription">
         Done
-        <app-green-plus [status]="3"></app-green-plus>
+        <app-green-plus
+          [status]="3"
+          matTooltip="Add-Task Done"
+          matTooltipPosition="above"
+        ></app-green-plus>
       </div>
     </div>
   </div>
@@ -81,11 +104,13 @@
       [cdkDropListConnectedTo]="[doneList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of crudService.tasks" cdkDrag>
+      <div
+        *ngFor="let task of crudService.tasks"
+        cdkDrag
+        [attr.data-task-id]="task.id"
+      >
         <ng-container *ngIf="task.status == 0">
-          <app-task-in-table
-            [task]="task"
-          ></app-task-in-table>
+          <app-task-in-table [task]="task"></app-task-in-table>
         </ng-container>
       </div>
     </div>
@@ -96,11 +121,13 @@
       [cdkDropListConnectedTo]="[todoList, inProgressList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of crudService.tasks" cdkDrag>
+      <div
+        *ngFor="let task of crudService.tasks"
+        cdkDrag
+        [attr.data-task-id]="task.id"
+      >
         <ng-container *ngIf="task.status == 1">
-          <app-task-in-table
-            [task]="task"
-          ></app-task-in-table>
+          <app-task-in-table [task]="task"></app-task-in-table>
         </ng-container>
       </div>
     </div>
@@ -111,11 +138,13 @@
       [cdkDropListConnectedTo]="[todoList, doneList, doTodayList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of crudService.tasks" cdkDrag>
+      <div
+        *ngFor="let task of crudService.tasks"
+        cdkDrag
+        [attr.data-task-id]="task.id"
+      >
         <ng-container *ngIf="task.status == 2">
-          <app-task-in-table
-            [task]="task"
-          ></app-task-in-table>
+          <app-task-in-table [task]="task"></app-task-in-table>
         </ng-container>
       </div>
     </div>
@@ -126,11 +155,13 @@
       [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let task of crudService.tasks" cdkDrag>
+      <div
+        *ngFor="let task of crudService.tasks"
+        cdkDrag
+        [attr.data-task-id]="task.id"
+      >
         <ng-container *ngIf="task.status == 3">
-          <app-task-in-table
-            [task]="task"
-          ></app-task-in-table>
+          <app-task-in-table [task]="task"></app-task-in-table>
         </ng-container>
       </div>
     </div>

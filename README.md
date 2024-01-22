@@ -1,27 +1,59 @@
-# KanbanFrontend
+Projektbeschreibung
+Projektname: Kanban-Backend-Exercise
+Beschreibung:
+Dieses Projekt kombiniert Angular als Frontend-Framework mit Django als Backend-Framework, um eine leistungsstarke und moderne Webanwendung zu erstellen.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
+Technologiestack:
+Frontend:
 
-## Development server
+Angular
+TypeScript
+HTML
+CSS/SCSS
+Backend:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Django
+Python
+Django REST Framework
+Funktionalitäten:
+Benutzeranmeldung und -verwaltung:
 
-## Code scaffolding
+Benutzer können sich registrieren und anmelden.
+Geschützte Bereiche sind nur für angemeldete Benutzer zugänglich.
+Dashboard:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ein übersichtliches Dashboard mit relevanten Informationen.
+Datenverwaltung:
 
-## Build
+CRUD-Operationen für bestimmte Datenobjekte über die Benutzeroberfläche.
+RESTful API-Kommunikation:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Das Frontend kommuniziert über RESTful APIs mit dem Django-Backend.
+Authentifizierung und Autorisierung:
 
-## Running unit tests
+Verwendung von Token-basierter Authentifizierung für sichere API-Aufrufe.
+Verschiedene Benutzerrollen mit unterschiedlichen Berechtigungen.
+Installationsanleitung:
+Frontend:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Stellen Sie sicher, dass Node.js und npm installiert sind.
+Navigieren Sie zum frontend-Verzeichnis und führen Sie npm install aus.
+Starten Sie die Anwendung mit ng serve.
+Backend:
 
-## Running end-to-end tests
+Stellen Sie sicher, dass Python und pip installiert sind.
+Navigieren Sie zum backend-Verzeichnis und führen Sie pip install -r requirements.txt aus.
+Starten Sie den Django-Entwicklungsserver mit python manage.py runserver.
+Datenbankmigrationen:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Führen Sie python manage.py makemigrations und python manage.py migrate aus.
+Starten Sie die Anwendung:
 
-## Further help
+Öffnen Sie Ihren Browser und navigieren Sie zu http://localhost:4200/.
+Beitrag und Mitwirkung:
+Wir freuen uns über Beiträge und Rückmeldungen. Wenn Sie zu diesem Projekt beitragen möchten, erstellen Sie bitte eine Fork und reichen Sie eine Pull-Anfrage ein.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Lizenz:
+Dieses Projekt ist unter der MIT-Lizenz lizenziert.
+
+Viel Spaß beim Entwickeln!

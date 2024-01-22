@@ -5,6 +5,7 @@
   "
 >
   <app-close-button></app-close-button>
+  
   <div class="selectContainer">
     <div>
       <input
@@ -18,6 +19,7 @@
       />
       <div class="counterTitle">{{ taskTitle.length }}/50</div>
     </div>
+
     <div class="colorContainer">
       <button (click)="openCloseSelectColor()">
         <div
@@ -49,6 +51,7 @@
         </button>
       </div>
     </div>
+
     <div class="propertiesContainer">
       <div>
         <app-members [property]="'add_member'"></app-members>
@@ -59,21 +62,40 @@
       <div class="properties" (click)="openCloseDescription()">
         <mat-icon>description</mat-icon>Description
       </div>
-      <div class="properties" style="cursor: not-allowed">
-        <mat-icon>more_horiz</mat-icon>More
+      <div>
+        <div (click)="openDataPicker()" class="properties">
+          <mat-icon>date_range</mat-icon>Due Date
+        </div>
       </div>
     </div>
+
+    <div class="dataPickerContainer" *ngIf="openDp">
+      <mat-card class="inline-calendar-card">
+        <mat-calendar [(selected)]="selectedData"></mat-calendar>
+      </mat-card>
+    </div>
+
+    <div *ngIf="selectedData" class="selectedData">
+      <div><strong>Due-Date</strong></div>
+      <div>{{ formattedDateForHTML() }}</div>
+    </div>
+
     <div *ngIf="membersSelectForTask.length > 0">
-      <div class="textMembers">Members</div>
+      <div class="textMembers"><strong>Members</strong></div>
       <div class="membersContainer">
         <div class="membersBadges" *ngFor="let member of allMembers">
-          <div class="members centerAll" *ngIf="member.checked">
+          <div
+            class="members centerAll"
+            matTooltip="{{ member.username }}"
+            matTooltipPosition="above"
+            *ngIf="member.checked"
+          >
             {{ member.initials }}
           </div>
         </div>
-        <span class="membersPlus centerAll"><mat-icon>add</mat-icon></span>
       </div>
     </div>
+
     <div class="descriptionContainer" *ngIf="showDescription">
       Description
       <input
@@ -85,7 +107,9 @@
       />
       <div class="counterDescription">{{ description.length }}/200</div>
     </div>
+
   </div>
+
   <footer>
     <button (click)="saveAnd('more')">Save & add more</button>
     <button (click)="saveAnd('detail')">Save & open details</button>

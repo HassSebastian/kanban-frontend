@@ -18,6 +18,7 @@
 
   <div class="detailHead">
     <div class="changeContainer">
+      <label>Title</label>
       <div
         class="inputField"
         (click)="showTitleInput = true"
@@ -30,6 +31,7 @@
       >
         {{ updateTaskArray.title }}
       </div>
+
       <div class="changeField" *ngIf="showTitleInput">
         <input
           value="{{ updateTaskArray.title }}"
@@ -46,6 +48,7 @@
         />
         <div>{{ newTitle.length }}/50</div>
       </div>
+
       <div class="buttonField" *ngIf="showTitleInput">
         <button (click)="cancelInput()">CANCEL</button>
         <button (click)="updateTitleAndDescription()">
@@ -53,6 +56,7 @@
         </button>
       </div>
     </div>
+
     <div class="detailWorkflow">
       <label>Status</label>
       <button
@@ -80,6 +84,7 @@
       </mat-menu>
     </div>
   </div>
+
   <div class="detailProperties">
     <div class="propertieItemContainer">
       <label>Color</label>
@@ -114,6 +119,7 @@
         </button>
       </mat-menu>
     </div>
+
     <div class="propertieItemContainer">
       <label>Members</label>
       <div class="propertieItem">
@@ -124,6 +130,7 @@
         </div>
       </div>
     </div>
+
     <div class="propertieItemContainer" *ngIf="updateTaskArray.lable">
       <label>Labels</label>
       <div class="propertieItem">
@@ -131,22 +138,54 @@
         <div class="addLabel centerAll"><mat-icon>add</mat-icon></div>
       </div>
     </div>
-    <div class="propertieItemContainer" *ngIf="updateTaskArray.due_date">
-      <label>Time Estimate</label>
-      <div class="propertieItem">
-        <div class="time">12h</div>
+
+    <div class="propertieItemContainer" *ngIf="!updateTaskArray.due_date">
+      <label>Due date</label>
+      <div class="addDueDate centerAll" (click)="openEditDueDate()">
+        <mat-icon>add</mat-icon>
       </div>
     </div>
+
     <div class="propertieItemContainer" *ngIf="updateTaskArray.due_date">
       <label>Due date</label>
       <div class="propertieItem">
         <div class="dueDate">
-          <strong>Oct 21 at 17:00</strong>
-          <span> (in porgress)</span>
+          <strong
+            (click)="openEditDueDate()"
+            [style]="
+              restOfTimeForHTML() < 0 ? 'text-decoration:line-through;color:red' : ''
+            "
+            >{{ formattedDateForHTML() }}</strong
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="propertieItemContainer" *ngIf="updateTaskArray.due_date">
+      <label>rest of Time</label>
+      <div class="propertieItem" style="cursor: auto">
+        <div class="dueDate">
+          <strong
+            >{{
+              restOfTimeForHTML() === 0
+                ? "Heute"
+                : restOfTimeForHTML() > 0
+                ? "noch " + restOfTimeForHTML()
+                : ""
+            }}
+            <span *ngIf="restOfTimeForHTML() > 0">Tag/e</span></strong
+          >
         </div>
       </div>
     </div>
   </div>
+
+  <div class="dataPickerContainer" *ngIf="showEditDueDate">
+    <mat-card class="inline-calendar-card">
+      <mat-calendar [(selected)]="editSelectedData"></mat-calendar>
+    </mat-card>
+  </div>
+
   <div class="propertieItemContainer">
     <label>Description</label>
     <div
@@ -171,6 +210,7 @@
         />
         <div>{{ newDescription.length }}/200</div>
       </div>
+
       <div class="buttonField">
         <button (click)="cancelInput()">CANCEL</button>
         <button (click)="updateTitleAndDescription()">

@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ErrorDialogComponent } from 'src/app/dialog/error-dialog/error-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-register',
@@ -11,19 +10,26 @@ import { CrudService } from 'src/app/services/crud.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  first_name: string = '';
-  last_name: string = '';
   email: string = '';
   username: string = '';
   password: string = '';
+  last_name: string = '';
+  first_name: string = '';
 
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private authService: AuthService,
-    private crudService: CrudService
+    private authService: AuthService
   ) {}
 
+  /**
+   * Asynchronous method to handle user registration.
+   *
+   * - Calls the `registrWithUsernameEmailAndPassword` method of the `AuthService`
+   *   to register a new user with the provided information.
+   * - Navigates the user to the 'login' route after successful registration.
+   * - Opens an error dialog and logs the error if registration fails.
+   */
   async registerUser() {
     try {
       let resp = await this.authService.registrWithUsernameEmailAndPassword(

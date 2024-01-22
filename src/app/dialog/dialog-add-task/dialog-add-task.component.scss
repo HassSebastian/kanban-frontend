@@ -3,6 +3,7 @@
   width: 500px;
   padding: 30px 30px 10px;
   min-height: 300px;
+  height: fit-content;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -108,6 +109,7 @@
       justify-content: space-between;
       // margin-bottom: 30px;
       .properties {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -118,6 +120,16 @@
           filter: drop-shadow(4px 4px 8px lightgrey);
         }
       }
+    }
+    .dataPickerContainer{
+      display: flex;
+      justify-content: flex-end;
+    }
+    .selectedData{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
     }
     .textMembers {
       margin-top: 16px;
