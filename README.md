@@ -1,59 +1,76 @@
-Projektbeschreibung
-Projektname: Kanban-Backend-Exercise
-Beschreibung:
+# Kanban-Backend-Exercise
+
+## Projektbeschreibung:
+
 Dieses Projekt kombiniert Angular als Frontend-Framework mit Django als Backend-Framework, um eine leistungsstarke und moderne Webanwendung zu erstellen.
 
-Technologiestack:
-Frontend:
+## Technologiestack:
 
-Angular
-TypeScript
-HTML
-CSS/SCSS
-Backend:
+### Frontend:
 
-Django
-Python
-Django REST Framework
-Funktionalitäten:
-Benutzeranmeldung und -verwaltung:
+- Angular
+- TypeScript
+- HTML
+- CSS/SCSS
 
-Benutzer können sich registrieren und anmelden.
-Geschützte Bereiche sind nur für angemeldete Benutzer zugänglich.
-Dashboard:
+### Backend:
 
-Ein übersichtliches Dashboard mit relevanten Informationen.
-Datenverwaltung:
+- Django
+- Python
+- Django REST Framework
 
-CRUD-Operationen für bestimmte Datenobjekte über die Benutzeroberfläche.
-RESTful API-Kommunikation:
+## Funktionalitäten:
 
-Das Frontend kommuniziert über RESTful APIs mit dem Django-Backend.
-Authentifizierung und Autorisierung:
+### Benutzeranmeldung und -verwaltung:
 
-Verwendung von Token-basierter Authentifizierung für sichere API-Aufrufe.
-Verschiedene Benutzerrollen mit unterschiedlichen Berechtigungen.
-Installationsanleitung:
-Frontend:
+- Benutzer können sich registrieren und anmelden.
+- Geschützte Bereiche sind nur für angemeldete Benutzer zugänglich.
 
-Stellen Sie sicher, dass Node.js und npm installiert sind.
-Navigieren Sie zum frontend-Verzeichnis und führen Sie npm install aus.
-Starten Sie die Anwendung mit ng serve.
-Backend:
+### Dashboard:
 
-Stellen Sie sicher, dass Python und pip installiert sind.
-Navigieren Sie zum backend-Verzeichnis und führen Sie pip install -r requirements.txt aus.
-Starten Sie den Django-Entwicklungsserver mit python manage.py runserver.
-Datenbankmigrationen:
+- Ein übersichtliches Dashboard mit relevanten Informationen.
 
-Führen Sie python manage.py makemigrations und python manage.py migrate aus.
-Starten Sie die Anwendung:
+### Datenverwaltung:
 
-Öffnen Sie Ihren Browser und navigieren Sie zu http://localhost:4200/.
-Beitrag und Mitwirkung:
+- CRUD-Operationen für bestimmte Datenobjekte über die Benutzeroberfläche.
+
+### RESTful API-Kommunikation:
+
+- Das Frontend kommuniziert über RESTful APIs mit dem Django-Backend.
+
+### Authentifizierung und Autorisierung:
+
+- Verwendung von Token-basierter Authentifizierung für sichere API-Aufrufe.
+- Verschiedene Benutzerrollen mit unterschiedlichen Berechtigungen.
+
+## Installationsanleitung:
+
+### Frontend:
+
+1. Stellen Sie sicher, dass Node.js und npm installiert sind.
+2. Navigieren Sie zum `frontend`-Verzeichnis und führen Sie `npm install` aus.
+3. Starten Sie die Anwendung mit `ng serve`.
+
+### Backend:
+
+1. Stellen Sie sicher, dass Python und pip installiert sind.
+2. Navigieren Sie zum `backend`-Verzeichnis und führen Sie `pip install -r requirements.txt` aus.
+3. Starten Sie den Django-Entwicklungsserver mit `python manage.py runserver`.
+
+### Datenbankmigrationen:
+
+- Führen Sie `python manage.py makemigrations` und `python manage.py migrate` aus.
+
+### Starten Sie die Anwendung:
+
+- Öffnen Sie Ihren Browser und navigieren Sie zu [http://localhost:4200/](http://localhost:4200/).
+
+## Beitrag und Mitwirkung:
+
 Wir freuen uns über Beiträge und Rückmeldungen. Wenn Sie zu diesem Projekt beitragen möchten, erstellen Sie bitte eine Fork und reichen Sie eine Pull-Anfrage ein.
 
-Lizenz:
+## Lizenz:
+
 Dieses Projekt ist unter der MIT-Lizenz lizenziert.
 
 Viel Spaß beim Entwickeln!
