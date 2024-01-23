@@ -1,4 +1,5 @@
 export const environment = {
-    production: true,
+    production: false,
     baseUrl: 'http://localhost:8000'
+    // baseUrl: 'https://basti.pythonanywhere.com/'
 };

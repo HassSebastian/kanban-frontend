@@ -1,18 +1,29 @@
-.loginContainer{
-    width: 100vw;
-    height: 100vh;
-    .loginArea{
-        flex-direction: column;
-        gap: 16px;
-        width: 500px;
-        height: 300px;
-        background-color: lightgrey;
-        border: 1px solid gray;
-        border-radius: 10px;
-        form{
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+.loginContainer {
+  // position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  .loginArea {
+    position: relative;
+    flex-direction: column;
+    // gap: 16px;
+    width: 500px;
+    height: fit-content;
+    background-color: lightgrey;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 16px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
+    .close{
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
     }
+  
+  }
+}

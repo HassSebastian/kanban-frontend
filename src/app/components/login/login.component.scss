@@ -1,18 +1,21 @@
-.loginContainer{
-width: 100vw;
-height: 100vh;
-.loginArea{
+.loginContainer {
+  width: 100vw;
+  height: 100vh;
+  .loginArea {
+    display: flex;
     flex-direction: column;
-    gap: 16px;
     width: 500px;
-    height: 300px;
+    height: fit-content;
     background-color: lightgrey;
     border: 1px solid gray;
     border-radius: 10px;
-    form{
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+    padding: 16px;
+    gap: 16px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-}
+  }
 }

@@ -1,12 +1,24 @@
-.collaboratorContainer{
+.collaboratorMasterContainer {
+  width: 100px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar{
+    background-color: transparent;
+    height: 6px;
+  }
+  &:hover::-webkit-scrollbar-thumb{
+    background-color: lightgrey;
+  }
+  .collaboratorContainer {
     display: flex;
+    width: fit-content;
     gap: 3px;
 
-.collaborator {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: white;
-    text-shadow: 0 0 3px black;
+    .collaborator {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: white;
+      text-shadow: 0 0 3px black;
+    }
   }
 }

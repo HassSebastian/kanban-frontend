@@ -37,7 +37,9 @@
           value="{{ updateTaskArray.title }}"
           [(ngModel)]="newTitle"
           [style.border-bottom]="
-            updateColorIndex === -1
+            newTitle.length < 3
+              ? '2px solid red'
+              : updateColorIndex === -1
               ? '2px solid hsl(' +
                 colors[updateTaskArray.color].color +
                 ', 100%, 65%)'
@@ -51,7 +53,10 @@
 
       <div class="buttonField" *ngIf="showTitleInput">
         <button (click)="cancelInput()">CANCEL</button>
-        <button (click)="updateTitleAndDescription()">
+        <button
+          (click)="updateTitleAndDescription()"
+          [disabled]="newTitle.length < 3"
+        >
           <strong>SAVE</strong>
         </button>
       </div>
@@ -153,7 +158,9 @@
           <strong
             (click)="openEditDueDate()"
             [style]="
-              restOfTimeForHTML() < 0 ? 'text-decoration:line-through;color:red' : ''
+              restOfTimeForHTML() < 0
+                ? 'text-decoration:line-through;color:red'
+                : ''
             "
             >{{ formattedDateForHTML() }}</strong
           >

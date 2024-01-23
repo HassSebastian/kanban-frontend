@@ -56,7 +56,6 @@
           color: white;
         }
         .badges {
-
           div {
             width: 23px;
             height: 23px;
@@ -82,7 +81,7 @@
         align-items: center;
         gap: 8px;
         .hoverBorder {
-          cursor: pointer;
+          cursor: not-allowed;
           div {
             border: 2px solid transparent;
           }

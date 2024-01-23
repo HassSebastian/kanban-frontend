@@ -50,7 +50,7 @@ export class AuthService {
       last_name: last_name,
       email: email,
       username: username,
-      password1: password,
+      password: password,
     };
     return lastValueFrom(this.http.post(url, body));
   }

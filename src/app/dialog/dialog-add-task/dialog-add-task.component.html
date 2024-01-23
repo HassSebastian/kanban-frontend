@@ -5,7 +5,7 @@
   "
 >
   <app-close-button></app-close-button>
-  
+
   <div class="selectContainer">
     <div>
       <input
@@ -14,7 +14,11 @@
         required=""
         maxlength="50"
         [style.border-bottom]="
-          '2px solid hsl(' + colors[selectedColorIndex].color + ', 100%, 65%)'
+          taskTitle.length > 2
+            ? '2px solid hsl(' +
+              colors[selectedColorIndex].color +
+              ', 100%, 65%)'
+            : '2px solid red'
         "
       />
       <div class="counterTitle">{{ taskTitle.length }}/50</div>
@@ -107,12 +111,11 @@
       />
       <div class="counterDescription">{{ description.length }}/200</div>
     </div>
-
   </div>
 
   <footer>
-    <button (click)="saveAnd('more')">Save & add more</button>
-    <button (click)="saveAnd('detail')">Save & open details</button>
-    <button (click)="saveAnd('close')">Save & close</button>
+    <button (click)="saveAnd('more')" [disabled]="taskTitle.length < 3">Save & add more</button>
+    <button (click)="saveAnd('detail')" [disabled]="taskTitle.length < 3">Save & open details</button>
+    <button (click)="saveAnd('close')" [disabled]="taskTitle.length < 3">Save & close</button>
   </footer>
 </div>
